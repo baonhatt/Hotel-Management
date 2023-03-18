@@ -1,0 +1,18 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ApiserviceService {
+  constructor(private http: HttpClient) {}
+
+  login(username: string, password: string, email: string) {
+    return this.http.post('login', { username, password, email });
+  }
+
+  getUser() {
+    return this.http.get('http://localhost:3000/signupUsersList');
+  }
+}
