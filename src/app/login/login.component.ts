@@ -31,7 +31,8 @@ export class LoginComponent implements OnInit {
     const password = this.loginForm?.get('password')?.value;
     this.auth.login(email, password).subscribe((response) =>{
       if(response){
-        this.route.navigate(['home'])
+        this.route.navigate(['page-user'])
+        alert("Login successful!")
       }else{
         alert("Something was wrong!")
       }

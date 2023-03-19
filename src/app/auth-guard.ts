@@ -25,7 +25,7 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree> {
 
     this.auth.getAccessToken();
-    var userProfile = this.auth.userProfile.getValue();
+    var user = this.auth.userProfile.getValue();
 
     if ((User?.sub ?? 0) ) {
       if (route.data['requiredAuth'] == false) {

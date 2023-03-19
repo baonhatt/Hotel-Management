@@ -15,6 +15,8 @@ import { RoomComponent } from './room/room.component';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { AuthService } from './auth.service';
 import { CanActivate } from '@angular/router';
+import { PageuserComponent } from './pageuser/pageuser.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +25,8 @@ import { CanActivate } from '@angular/router';
     HomepageComponent,
     HeaderComponent,
     RoomComponent,
+    PageuserComponent,
+    DashboardComponent,
 
 
   ],

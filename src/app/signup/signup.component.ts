@@ -21,12 +21,12 @@ export class SignupComponent implements OnInit{
   constructor(private http: HttpClient, private route: Router, private fb: FormBuilder){}
   ngOnInit(): void {
     this.signupForm = this.fb.group({
-      fullName: [''],
+      name: [''],
       userName: [''],
       password: [''],
-      cfpwd:[''],
+      confirmPassword:[''],
       email: [''],
-      phone: [''],
+      phoneNumber: [''],
     })
 
   }
@@ -39,7 +39,6 @@ export class SignupComponent implements OnInit{
       this.signup.reset();
       alert("Create an account successfully!");
       this.route.navigate(['login'])
-
     },_err=>{
       alert('Something was wrong');
     })
