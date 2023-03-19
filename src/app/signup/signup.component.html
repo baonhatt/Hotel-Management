@@ -7,7 +7,7 @@
         </div>
         <div class="login-wrapper-contents login-padding">
           <h2 class="single-title"> Welcome! </h2>
-          <form class="login-wrapper-form custom-form padding-top-20" [formGroup]="signupForm" (ngSubmit)="signupdata(signup)">
+          <form class="login-wrapper-form custom-form padding-top-20" [formGroup]="signup" (ngSubmit)="signupdata(signup)">
             <div class="single-input mt-4">
               <label class="label-title mb-3"> Full Name </label>
               <input class="form--control" type="text"  formControlName="name"  placeholder="Type Full Name">

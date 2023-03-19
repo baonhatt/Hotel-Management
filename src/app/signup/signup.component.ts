@@ -12,15 +12,15 @@ export class SignupComponent implements OnInit{
 
 
   password: any;
-  signupForm: FormGroup|any;
+  signup: FormGroup|any;
   signuser: any;
-  signup: any;
+
 
   email!: any;
 
   constructor(private http: HttpClient, private route: Router, private fb: FormBuilder){}
   ngOnInit(): void {
-    this.signupForm = this.fb.group({
+    this.signup = this.fb.group({
       name: [''],
       userName: [''],
       password: [''],
@@ -32,10 +32,10 @@ export class SignupComponent implements OnInit{
   }
 
 
-  signupdata(signupForm: FormGroup){
+  signupdata(signup: FormGroup){
 
-    this.http.post<any>("https://webhotel.azurewebsites.net/api/Authorization/Registration", this.signupForm.value)
-    .subscribe(response =>{
+    this.http.post<any>("https://webhotel.azurewebsites.net/api/Authorization/Registration", this.signup.value)
+    .subscribe(res =>{
       this.signup.reset();
       alert("Create an account successfully!");
       this.route.navigate(['login'])
