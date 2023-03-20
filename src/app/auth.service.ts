@@ -18,19 +18,20 @@ export class AuthService {
 
 
   getAccessToken():string{
-    var localStorageToken = localStorage.getItem('tokens');
+    var localStorageToken = localStorage.getItem('token');
     if(localStorageToken){
       var token = JSON.parse(localStorageToken) as TokenModel;
-      var isTokenExpired = this.jwtService.isTokenExpired(token.access_token);
+      var isTokenExpired = this.jwtService.isTokenExpired(token.accessToken);
+      console.log("Hạn của token: "+isTokenExpired);
       if(isTokenExpired){
         this.userProfile.next(null);
         return "";
       }
       var userInfo = this.jwtService.decodeToken(
-        token.access_token
+        token.accessToken
       ) as User;
       this.userProfile.next(userInfo);
-      return token.access_token;
+      return token.accessToken;
     }
     return "";
   }
@@ -46,7 +47,7 @@ export class AuthService {
       var token = response as TokenModel;
       localStorage.setItem('token',JSON.stringify(token));
       var userInfo = this.jwtService.decodeToken(
-        token.access_token
+        token.accessToken
       ) as User;
 
       this.userProfile.next(userInfo);

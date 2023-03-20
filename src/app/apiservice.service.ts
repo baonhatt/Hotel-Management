@@ -13,7 +13,7 @@ export class ApiserviceService {
   }
 
   getData() {
-    return this.http.get('https://webhotel.azurewebsites.net/WeatherForecast');
+    return this.http.get('https://webhotel.azurewebsites.net/WeatherForecast',{responseType: 'text'});
   }
 
 }

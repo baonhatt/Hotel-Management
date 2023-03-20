@@ -27,25 +27,25 @@ export class AuthTokenInterceptor implements HttpInterceptor {
       return next.handle(req);
     }
 
-    const localStorageTokens = localStorage.getItem('tokens');
+    const localStorageTokens = localStorage.getItem('token');
     var token: TokenModel;
     if (localStorageTokens) {
       token = JSON.parse(localStorageTokens) as TokenModel;
-      var isTokenExpired = this.jwtHelper.isTokenExpired(token?.access_token);
+      var isTokenExpired = this.jwtHelper.isTokenExpired(token?.accessToken);
       if (!isTokenExpired) {
         return next.handle(req);
       } else {
         return this.authService.refreshToken(token).pipe(
           switchMap((newTokens: TokenModel) => {
-            localStorage.setItem('tokens', JSON.stringify(newTokens));
+            localStorage.setItem('token', JSON.stringify(newTokens));
             var userInfo = this.jwtHelper.decodeToken(
-              newTokens.access_token
+              newTokens.accessToken
             ) as User;
             this.authService.userProfile.next(userInfo);
             const transformedReq = req.clone({
               headers: req.headers.set(
                 'Authorization',
-                `bearer ${newTokens.access_token}`
+                `bearer ${newTokens.accessToken}`
               ),
             });
             return next.handle(transformedReq);

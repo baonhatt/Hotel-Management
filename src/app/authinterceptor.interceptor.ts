@@ -14,10 +14,11 @@ import { TokenModel } from './token-model';
 
 export class AuthinterceptorInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    const token = localStorage.getItem('tokens');
+    const token = localStorage.getItem('token');
     if (token) {
+      const tokenModel = JSON.parse(token) as TokenModel;
       const authReq = req.clone({
-        headers: req.headers.set('Authorization', `Bearer ${token}`)
+        headers: req.headers.set('Authorization', `Bearer ${tokenModel.accessToken}`)
       });
       return next.handle(authReq);
     } else {

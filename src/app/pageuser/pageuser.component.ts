@@ -14,8 +14,8 @@ export class PageuserComponent {
   constructor(private auth: AuthService, private fb: FormBuilder, private route: Router, private apiServe: ApiserviceService) { }
   getData() {
     this.apiServe.getData().subscribe((data) => {
-      this.data = data;
-      console.log(data)
+      this.data = data.toString();
+      console.log(data);
     });
   }
 
