@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, NgModel, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { catchError, map, Observable } from 'rxjs';
+import { ApiserviceService } from '../apiservice.service';
 
 @Component({
   selector: 'app-login',
@@ -15,30 +16,33 @@ export class LoginComponent implements OnInit {
   email: any;
   password: any;
   loginForm!: FormGroup;
-
-  constructor(private auth: AuthService,private fb: FormBuilder, private route: Router){}
+  data: any;
+  constructor(private auth: AuthService, private fb: FormBuilder, private route: Router, private apiServe: ApiserviceService) { }
   ngOnInit() {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
-
   }
+
+
+
   login() {
 
 
     const email = this.loginForm?.get('email')?.value;
     const password = this.loginForm?.get('password')?.value;
-    this.auth.login(email, password).subscribe((response) =>{
-      if(response){
+    this.auth.login(email, password).subscribe((response) => {
+      if (response) {
         this.route.navigate(['page-user'])
         alert("Login successful!")
-      }else{
+      } else {
         alert("Something was wrong!")
       }
     })
   }
 
-
-
 }
+
+
+

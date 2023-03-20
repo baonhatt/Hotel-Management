@@ -12,7 +12,8 @@ export class ApiserviceService {
     return this.http.post('login', { username, password, email });
   }
 
-  getUser() {
-    return this.http.get('http://localhost:3000/signupUsersList');
+  getData() {
+    return this.http.get('https://webhotel.azurewebsites.net/WeatherForecast');
   }
+
 }
