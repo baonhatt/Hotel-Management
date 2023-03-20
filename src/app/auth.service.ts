@@ -43,7 +43,6 @@ export class AuthService {
     };
     return this.http.post<any>('https://webhotel.azurewebsites.net/api/Authorization/Login',
     body).pipe(tap(response =>{
-
       var token = response as TokenModel;
       localStorage.setItem('token',JSON.stringify(token));
       var userInfo = this.jwtService.decodeToken(
