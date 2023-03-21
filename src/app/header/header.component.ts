@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { ApiserviceService } from '../apiservice.service';
+import { AuthService } from '../shared/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +9,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+
+  constructor(private auth: AuthService, private fb: FormBuilder, private apiServe: ApiserviceService){}
+
+
+
+  isLoggedIn() {
+    return this.auth.isLoggedIn();
+  }
+  getUser(){
+    return this.apiServe.getUser()
+  }
+  getLoggedInUser() {
+    return this.auth.getLoggedInUser();
+  }
+
+  logout(): void {
+    // Xóa thông tin người dùng khỏi localStorage hoặc sessionStorage khi đăng xuất
+    localStorage.removeItem('token');
+  }
 
 }

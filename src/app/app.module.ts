@@ -9,14 +9,16 @@ import { RouterModule } from '@angular/router';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { AuthinterceptorInterceptor } from './authinterceptor.interceptor';
+import { AuthTokenInterceptor } from '../app/shared/auth/auth-token-interceptor';
 import { HeaderComponent } from './header/header.component';
-import { RoomComponent } from './room/room.component';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
-import { AuthService } from './auth.service';
+import { AuthService } from '../app/shared/auth/auth.service';
 import { CanActivate } from '@angular/router';
-import { PageuserComponent } from './pageuser/pageuser.component';
+import { AuthGuard } from './shared/auth/auth-guard';
+import { PageuserComponent } from '../app/pageuser/pageuser.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { RoomDetailComponent } from './room-detail/room-detail.component';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,9 +26,10 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
     SignupComponent,
     HomepageComponent,
     HeaderComponent,
-    RoomComponent,
     PageuserComponent,
     DashboardComponent,
+    RoomDetailComponent,
+    FooterComponent,
 
 
   ],
@@ -47,7 +50,9 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthinterceptorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS,
+      useClass: AuthTokenInterceptor,
+      multi: true },[AuthGuard]
   ],
   bootstrap: [AppComponent]
 })

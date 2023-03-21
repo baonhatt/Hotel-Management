@@ -9,7 +9,7 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
-import { User } from './user/user';
+import { User } from '../../user/user';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -27,7 +27,7 @@ export class AuthGuard implements CanActivate {
     this.auth.getAccessToken();
     var user = this.auth.userProfile.getValue();
 
-    if ((User?.sub ?? 0) ) {
+    if ((user?.Email ?? 0) > 0) {
       if (route.data['requiredAuth'] == false) {
         this.router.navigate(['/']);
         return false;

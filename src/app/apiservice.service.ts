@@ -1,19 +1,18 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from './shared/auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiserviceService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient ,private auth: AuthService) {}
 
-  login(username: string, password: string, email: string) {
-    return this.http.post('login', { username, password, email });
+  user: any;
+
+  getUser() {
+    this.user = this.auth.userProfile
+    return this.user
   }
-
-  getData() {
-    return this.http.get('https://webhotel.azurewebsites.net/WeatherForecast',{responseType: 'text'});
-  }
-
 }

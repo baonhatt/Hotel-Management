@@ -53,12 +53,38 @@
       <div class="navbar-right-content show-nav-content">
         <div class="single-right-content">
           <div class="navbar-right-flex">
-            <div class="navbar-right-btn">
-              <a routerLink="/login"> Log In </a>
-            </div>
-            <div class="btn-wrapper">
-              <a routerLink="/signup" class="cmn-btn btn-bg-1 radius-10"> Sign Up </a>
-            </div>
+
+            <div *ngIf="isLoggedIn(); then loggedInUser; else loginButton"></div>
+            <ng-template #loggedInUser>
+              <span>
+                <div class="navbar-author">
+                  <div class="navbar-author-flex">
+                    <div class="navbar-author-thumb">
+                      <img src="assets/img/single-page/author.jpg" alt="img">
+                    </div>
+                    <div class="navbar-author-name">
+                      <h6 class="navbar-author-name-title">{{ getLoggedInUser() }} </h6>
+                    </div>
+                  </div>
+                  <div class="navbar-author-wrapper">
+                    <div class="navbar-author-wrapper-list">
+                      <a href="signup.html" class="navbar-author-wrapper-list-item"> Sign Up </a>
+                      <a href="login.html" class="navbar-author-wrapper-list-item"> Sign In </a>
+                      <span class="navbar-author-wrapper-list-item" (click)="logout()"> Log Out </span>
+                    </div>
+                  </div>
+                </div>
+              </span>
+            </ng-template>
+            <ng-template #loginButton>
+
+              <div class="navbar-right-btn">
+                <a routerLink="/login"> Log In </a>
+              </div>
+              <div class="btn-wrapper">
+                <a routerLink="/signup"  class="cmn-btn btn-bg-1 radius-10"> Sign Up </a>
+              </div>
+            </ng-template>
           </div>
         </div>
       </div>
