@@ -12,13 +12,14 @@ import { FormsModule } from '@angular/forms';
 import { AuthTokenInterceptor } from './_helper/http.interceptor';
 import { HeaderComponent } from './header/header.component';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
-import { AuthService } from './_service/auth.service';
 // import { CanActivate } from '@angular/router';
 import { AuthGuard } from './_helper/http.guard';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { RoomDetailComponent } from './room-detail/room-detail.component';
 import { FooterComponent } from './footer/footer.component';
 import { StorageService } from './_service/storage.service';
+import { EmailValidatorDirective } from './_shared/validator/email-validators.directive';
+import {  ValidatorFn, AbstractControl } from '@angular/forms';
 
 @NgModule({
   declarations: [
