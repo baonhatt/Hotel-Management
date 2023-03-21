@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,9 +13,8 @@ import { AuthService } from '../shared/auth/auth.service';
 export class PageuserComponent {
  constructor(private http : HttpClient){}
   getData(){
-
-    this.http.get('https://webhotel.azurewebsites.net/WeatherForecast').subscribe(res => {
-
+    const headers = new HttpHeaders()
+    this.http.get('https://webhotel.azurewebsites.net/WeatherForecast', { headers, responseType: 'text'}).subscribe(res => {
       console.log(res);
     });
 

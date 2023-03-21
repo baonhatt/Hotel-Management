@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     this.auth.login(email, password).subscribe((response) => {
       if (response ) {
         var token = response as TokenModel
-
+        localStorage.setItem("token",JSON.stringify(token));
         this.route.navigate(['page-user'],)
         alert("Login successful!")
         this.userProfile = this.auth.userProfile

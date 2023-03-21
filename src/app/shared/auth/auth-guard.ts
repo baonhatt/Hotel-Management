@@ -24,19 +24,19 @@ export class AuthGuard implements CanActivate {
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
 
-    this.auth.getAccessToken();
+    console.log("guard");
+    this.auth.getaccessToken();
     var user = this.auth.userProfile.getValue();
 
     if ((user?.Email ?? 0) > 0) {
-      if (route.data['requiredAuth'] == false) {
-        this.router.navigate(['/']);
-        return false;
-      }
-
+      // if (route.data['requiredAuth'] == false) {
+      //   this.router.navigate(['/']);
+      //   return false;
+      // }
       return true;
     } else {
       if (route.data['requiredAuth'] == true) {
-        this.router.navigate(['/']);
+        this.router.navigate(['/login']);
         return false;
       }
       return true;

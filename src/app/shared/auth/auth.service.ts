@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, catchError, Observable, of, tap } from 'rxjs';
@@ -16,7 +16,7 @@ export class AuthService {
   userProfile = new BehaviorSubject<User | null>(null);
 
 
-  getAccessToken(): string {
+  getaccessToken(): string {
     var localStorageToken = localStorage.getItem('token');
     if (localStorageToken) {
       var token = JSON.parse(localStorageToken) as TokenModel;
@@ -37,7 +37,6 @@ export class AuthService {
 
   login(email: string, password: string) {
     const body = {
-      // userName: username,
       password: password,
       email: email
     };
@@ -71,7 +70,7 @@ export class AuthService {
 
   logout(): void {
     // Xóa thông tin người dùng khỏi localStorage hoặc sessionStorage khi đăng xuất
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('token');
   }
 
   isLoggedIn(): boolean {

@@ -8,11 +8,46 @@ import { PageuserComponent } from './pageuser/pageuser.component';
 import { RoomDetailComponent } from './room-detail/room-detail.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent},
-  { path: 'signup', component: SignupComponent },
-  { path: 'home', component: HomepageComponent,   },
-  { path: 'page-user', component: PageuserComponent},
-  { path: 'room-detail', component: RoomDetailComponent },
+  {
+    path: 'login',
+    component: LoginComponent,
+    data : {
+      requiredAuth:false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'signup',
+    component: SignupComponent,
+    data : {
+      requiredAuth:false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'home',
+    component: HomepageComponent,
+    data : {
+      requiredAuth:false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'page-user',
+    component: PageuserComponent,
+    data : {
+      requiredAuth:false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'room-detail',
+    component: RoomDetailComponent,
+    data : {
+      requiredAuth:false
+    },
+    canActivate: [AuthGuard]
+  },
   // { path: '', component: HomepageComponent , canActivate:[AuthGuard]},
 ];
 

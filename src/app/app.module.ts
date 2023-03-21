@@ -60,7 +60,7 @@ export class AppModule { }
 export function jwtOptionFactor(auth:AuthService){
   return {
     tokenGetter:() => {
-      return auth.getAccessToken();
+      return auth.getaccessToken();
     },
     allowedDomains:["https://webhotel.azurewebsites.net"],
     disallowedRoutes:[
