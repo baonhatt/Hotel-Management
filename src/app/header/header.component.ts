@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { ApiserviceService } from '../apiservice.service';
-import { AuthService } from '../shared/auth/auth.service';
+import { ApiService } from '../_service/api.service';
+import { AuthService } from '../_service/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +10,7 @@ import { AuthService } from '../shared/auth/auth.service';
 })
 export class HeaderComponent {
 
-  constructor(private auth: AuthService, private fb: FormBuilder, private apiServe: ApiserviceService){}
+  constructor(private auth: AuthService, private fb: FormBuilder, private apiServe: ApiService){}
 
 
 

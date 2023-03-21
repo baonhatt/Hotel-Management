@@ -1,4 +1,5 @@
 
+import { HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
@@ -8,12 +9,13 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from './auth.service';
-import { User } from '../../user/user';
+import { AuthService } from '../_service/auth.service';
+import { StorageService } from '../_service/storage.service';
+import { User } from '../_service/user.model';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private auth: AuthService, private router: Router, private storage: StorageService) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -24,19 +26,16 @@ export class AuthGuard implements CanActivate {
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
 
-    console.log("guard");
-    this.auth.getaccessToken();
-    var user = this.auth.userProfile.getValue();
-
-    if ((user?.Email ?? 0) > 0) {
-      // if (route.data['requiredAuth'] == false) {
-      //   this.router.navigate(['/']);
-      //   return false;
-      // }
+    var token = this.storage.isLoggedIn();
+    if (token) {
+      if (state.url == "/login"){
+        this.router.navigate(['/']);
+        return true;
+      }
       return true;
     } else {
       if (route.data['requiredAuth'] == true) {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/Author401']);
         return false;
       }
       return true;

@@ -15,12 +15,11 @@ import {
   Observable,
   switchMap,
   take,
-  tap,
   throwError,
 } from 'rxjs';
-import { AuthService } from './auth.service';
-import { TokenModel } from './token-model';
-import { User } from '../../user/user';
+import { AuthService } from '../_service/auth.service';
+import { TokenModel } from '../_service/token.model';
+import { User } from '../_service/user.model';
 import { Token } from '@angular/compiler';
 
 @Injectable()
@@ -39,17 +38,6 @@ export class AuthTokenInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     let authReq = req;
-    const localStorageTokens = localStorage.getItem('token');
-    if (localStorageTokens != null) {
-      const token = JSON.parse(localStorageTokens) as TokenModel;
-      authReq = req.clone({
-        headers: req.headers.set(
-          'Authorization',
-          `bearer ${token.accessToken}`
-        ),
-      });
-    }
-    console.log(1);
 
     return next.handle(authReq).pipe(
       catchError((error: HttpErrorResponse) => {
@@ -95,10 +83,6 @@ export class AuthTokenInterceptor implements HttpInterceptor {
   }
 
   private addTokenHeader(request: HttpRequest<any>, token: string) {
-    /* for Spring Boot back-end */
-    // return request.clone({ headers: request.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
-
-    /* for Node.js Express back-end */
     return request.clone({
       headers: request.headers.set('Authorization', `bearer ${token}`),
     });

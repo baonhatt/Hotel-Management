@@ -3,8 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './homepage/homepage.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import { AuthGuard } from './shared/auth/auth-guard';
-import { PageuserComponent } from './pageuser/pageuser.component';
+import { AuthGuard } from './_helper/http.guard';
 import { RoomDetailComponent } from './room-detail/room-detail.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -27,14 +26,6 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomepageComponent,
-    data : {
-      requiredAuth:false
-    },
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'page-user',
-    component: PageuserComponent,
     data : {
       requiredAuth:false
     },

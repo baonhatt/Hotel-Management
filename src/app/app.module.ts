@@ -9,16 +9,17 @@ import { RouterModule } from '@angular/router';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { AuthTokenInterceptor } from '../app/shared/auth/auth-token-interceptor';
+import { AuthTokenInterceptor } from './_helper/http.interceptor';
 import { HeaderComponent } from './header/header.component';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
-import { AuthService } from '../app/shared/auth/auth.service';
-import { CanActivate } from '@angular/router';
-import { AuthGuard } from './shared/auth/auth-guard';
-import { PageuserComponent } from '../app/pageuser/pageuser.component';
+import { AuthService } from './_service/auth.service';
+// import { CanActivate } from '@angular/router';
+import { AuthGuard } from './_helper/http.guard';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { RoomDetailComponent } from './room-detail/room-detail.component';
 import { FooterComponent } from './footer/footer.component';
+import { StorageService } from './_service/storage.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,12 +27,9 @@ import { FooterComponent } from './footer/footer.component';
     SignupComponent,
     HomepageComponent,
     HeaderComponent,
-    PageuserComponent,
     DashboardComponent,
     RoomDetailComponent,
     FooterComponent,
-
-
   ],
   imports: [
     BrowserModule,
@@ -43,28 +41,35 @@ import { FooterComponent } from './footer/footer.component';
     JwtModule.forRoot({
       jwtOptionsProvider:{
         provide:JWT_OPTIONS,
-        useFactory: jwtOptionFactor,
-        deps:[AuthService]
+        useFactory: jwtOptionsFactor,
+        deps:[StorageService]
       }
     })
 
   ],
-  providers: [
+  providers:
+  [
     { provide: HTTP_INTERCEPTORS,
       useClass: AuthTokenInterceptor,
-      multi: true },[AuthGuard]
+      multi: true
+    },
+    [AuthGuard]
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
+
 export class AppModule { }
-export function jwtOptionFactor(auth:AuthService){
+
+export function jwtOptionsFactor(storage:StorageService){
   return {
     tokenGetter:() => {
-      return auth.getaccessToken();
+      return storage.getAccessToken();
     },
-    allowedDomains:["https://webhotel.azurewebsites.net"],
+    allowedDomains:["webhotel.azurewebsites.net"],
     disallowedRoutes:[
-      "https://webhotel.azurewebsites.net/api/Authorization/Login"
-    ]
+      "webhotel.azurewebsites.net/api/Authorization/Login",
+      "webhotel.azurewebsites.net/api/Token/Refresh"
+    ],
+    skipWhenExpired: false,
   }
 }
