@@ -5956,8 +5956,8 @@ span {
 .custom-form .single-input .form-control#phone,
 .custom-form .form-group .form--control#phone,
 .custom-form .form-group .form-control#phone {
-  width: 100%;
-  padding-left: 50px;
+  /* width: 100%;
+  padding-left: 50px; */
 }
 .custom-form .single-input .form--control::-webkit-outer-spin-button, .custom-form .single-input .form--control::-webkit-inner-spin-button,
 .custom-form .single-input .form-control::-webkit-outer-spin-button,
