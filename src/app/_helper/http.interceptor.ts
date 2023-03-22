@@ -13,6 +13,7 @@ import {
   catchError,
   filter,
   Observable,
+  of,
   switchMap,
   take,
   throwError,
@@ -21,17 +22,17 @@ import { AuthService } from '../_service/auth.service';
 import { TokenModel } from '../_service/token.model';
 import { User } from '../_service/user.model';
 import { Token } from '@angular/compiler';
+import { StorageService } from '../_service/storage.service';
 
 @Injectable()
 export class AuthTokenInterceptor implements HttpInterceptor {
-  private isRefreshing = false;
   private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(
     null
   );
   constructor(
     private jwtHelper: JwtHelperService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
   ) {}
   intercept(
     req: HttpRequest<any>,
@@ -42,9 +43,12 @@ export class AuthTokenInterceptor implements HttpInterceptor {
       console.log("Đã vào login or refresh token");
       return next.handle(req);
     }
+
     return next.handle(authReq).pipe(
       catchError((error: HttpErrorResponse) => {
-        if (!authReq.url.includes('Login') && error.status === 401) {
+        console.log(error.status);
+        if (error.status === 401) {
+          this.router.navigate(['login']);
           return this.handle401Error(authReq, next);
         }
         return throwError(error);
@@ -52,36 +56,17 @@ export class AuthTokenInterceptor implements HttpInterceptor {
     );
   }
   private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
-    if (!this.isRefreshing) {
-      this.isRefreshing = true;
-      this.refreshTokenSubject.next(null);
-      const localStorageTokens = localStorage.getItem('token');
-      var token: TokenModel;
-      if (localStorageTokens != null) {
-        token = JSON.parse(localStorageTokens) as TokenModel;
-        return this.authService.refreshToken(token).pipe(
-          switchMap((tokenNew: TokenModel) => {
-            this.isRefreshing = false;
-            localStorage.setItem('token', JSON.stringify(tokenNew));
-            this.refreshTokenSubject.next(tokenNew.accessToken);
-            return next.handle(
-              this.addTokenHeader(request, tokenNew.accessToken)
-            );
-          }),
-          catchError((err) => {
-            this.isRefreshing = false;
-            this.authService.logout();
-            return throwError(err);
-          })
-        );
-      }
+    var result = this.authService.checkAccessTokenAndRefresh();
+    this.refreshTokenSubject.next(null);
+    if(result.status){
+      this.refreshTokenSubject.next(result.token);
+      return this.refreshTokenSubject.pipe(
+        filter((token) => token !== null),
+        take(1),
+        switchMap((token) => next.handle(this.addTokenHeader(request, token)))
+      );
     }
-
-    return this.refreshTokenSubject.pipe(
-      filter((token) => token !== null),
-      take(1),
-      switchMap((token) => next.handle(this.addTokenHeader(request, token)))
-    );
+    return of();
   }
 
   private addTokenHeader(request: HttpRequest<any>, token: string) {

@@ -69,7 +69,7 @@ export class AuthService {
     return null;
   }
 
-  public checkAccessTokenAndRefresh(): boolean {
+  public checkAccessTokenAndRefresh(): {status : "", token: ""} {
     const localStorageTokens = localStorage.getItem('token');
     var check = true;
     if (localStorageTokens) {
@@ -79,7 +79,10 @@ export class AuthService {
         this.refreshToken(token).subscribe(
           (tokenNew: TokenModel) => {
             localStorage.setItem('token', JSON.stringify(tokenNew));
-            check = true;
+            return Object({
+              status : check,
+              token : tokenNew,
+            });
           },
           err => {
             this.logout();
@@ -90,7 +93,9 @@ export class AuthService {
     }else{
       check = false;
     }
-    return check;
+    return Object({
+      status : check,
+    });
   }
 
 }
