@@ -1,5 +1,8 @@
 import { Token } from '@angular/compiler';
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { catchError, map, Observable, of } from 'rxjs';
+import { AuthService } from './auth.service';
 import { TokenModel } from './token.model';
 
 const TOKEN = 'token';
@@ -12,7 +15,7 @@ export class StorageService {
 
   public deleteToken(): boolean {
     try {
-      if(localStorage.getItem(TOKEN)){
+      if (localStorage.getItem(TOKEN)) {
         localStorage.removeItem(TOKEN);
       }
       return true;
@@ -30,7 +33,7 @@ export class StorageService {
     }
   }
 
-  public getToken(): TokenModel | null{
+  public getToken(): TokenModel | null {
     const tokenLocalStorage = localStorage.getItem(TOKEN);
     if (tokenLocalStorage) {
       let token = JSON.parse(tokenLocalStorage) as TokenModel;
@@ -39,13 +42,13 @@ export class StorageService {
     return null;
   }
 
-  public getAccessToken(): string{
+  public getAccessToken(): string {
     const tokenLocalStorage = localStorage.getItem(TOKEN);
     if (tokenLocalStorage) {
       let token = JSON.parse(tokenLocalStorage) as TokenModel;
       return token.accessToken;
     }
-    return "";
+    return '';
   }
 
   public isLoggedIn(): boolean {

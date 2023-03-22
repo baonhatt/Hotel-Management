@@ -1,7 +1,7 @@
 import { HttpClient, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { BehaviorSubject, catchError, Observable, of, tap } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
 import { TokenModel } from './token.model';
 import { LoginComponent } from '../login/login.component';
 import { User } from './user.model';
@@ -15,7 +15,7 @@ const URL_BASE = 'https://webhotel.azurewebsites.net/';
 })
 export class AuthService {
   jwtService: JwtHelperService = new JwtHelperService();
-  constructor(private http: HttpClient, private storage: StorageService) {}
+  constructor(private http: HttpClient, private storage: StorageService, private jwtHelper: JwtHelperService) {}
   userProfile = new BehaviorSubject<User | null>(null);
 
   login(email: string, password: string) {
@@ -68,4 +68,29 @@ export class AuthService {
     }
     return null;
   }
+
+  public checkAccessTokenAndRefresh(): boolean {
+    const localStorageTokens = localStorage.getItem('token');
+    var check = true;
+    if (localStorageTokens) {
+      var token = JSON.parse(localStorageTokens) as TokenModel;
+      var isTokenExpired = this.jwtHelper.isTokenExpired(token.accessToken);
+      if(isTokenExpired){
+        this.refreshToken(token).subscribe(
+          (tokenNew: TokenModel) => {
+            localStorage.setItem('token', JSON.stringify(tokenNew));
+            check = true;
+          },
+          err => {
+            this.logout();
+            check = false;
+          }
+        );
+      }
+    }else{
+      check = false;
+    }
+    return check;
+  }
+
 }

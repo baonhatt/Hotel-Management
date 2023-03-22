@@ -38,11 +38,13 @@ export class AuthTokenInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     let authReq = req;
-
+    if(req.url.indexOf('Login') > 0 || req.url.indexOf('Token/Refresh') > 0){
+      console.log("Đã vào login or refresh token");
+      return next.handle(req);
+    }
     return next.handle(authReq).pipe(
       catchError((error: HttpErrorResponse) => {
         if (!authReq.url.includes('Login') && error.status === 401) {
-          console.log(2);
           return this.handle401Error(authReq, next);
         }
         return throwError(error);

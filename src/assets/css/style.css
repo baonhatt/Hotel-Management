@@ -13805,3 +13805,8 @@ blockquote .blockquote-contents-title {
   line-height: 36px;
   margin: -4px 0 0;
 }
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
