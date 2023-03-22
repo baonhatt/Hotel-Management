@@ -16,6 +16,7 @@
     padding-right: 36px;
     margin-right: 0; }
   .iti__flag-container {
+    display: none;
     position: absolute;
     top: 0;
     bottom: 0;
