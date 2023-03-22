@@ -30,7 +30,7 @@
         })
 
 
-        /* 
+        /*
         ========================================
             Navbar Toggler
         ========================================
@@ -43,7 +43,7 @@
             $(".show-nav-content").toggleClass("show");
         });
 
-        /* 
+        /*
         ========================================
             Show nav right content
         ========================================
@@ -52,7 +52,7 @@
             $(".right-contents-show").toggleClass("show");
         });
 
-        /* 
+        /*
         ========================================
             Shop Responsive Sidebar
         ========================================
@@ -92,7 +92,7 @@
             })
         });
 
-        /* 
+        /*
         ========================================
             Tab
         ========================================
@@ -107,7 +107,7 @@
             $("#" + tab_id).addClass('active');
         });
 
-        /* 
+        /*
         ========================================
             Pagination On Click Js
         ========================================
@@ -126,7 +126,7 @@
             $(this).parent().find('.pagination-list-item.active').next('.pagination-list-item').removeClass('active');
         });
 
-        /* 
+        /*
         ========================================
             Hover Slide Js
         ========================================
@@ -141,7 +141,7 @@
             r.preventDefault();
         });
 
-        /* 
+        /*
         ========================================
             Product Quantity js
         ========================================
@@ -163,7 +163,7 @@
 
         });
 
-        /* 
+        /*
         ========================================
             Click Active Class
         ========================================
@@ -207,14 +207,14 @@
             }
         });
 
-        /* 
+        /*
         ========================================
             Nice Select
         ========================================
         */
         $('.js-select').niceSelect();
 
-        /* 
+        /*
         ========================================
             Click Active Class
         ========================================
@@ -247,7 +247,7 @@
             }
         });
 
-        /* 
+        /*
         ========================================
             Dropdown Submenu
         ========================================
@@ -257,7 +257,7 @@
             var sh = $(this).parent('.has-children');
             if (sh.hasClass('open')) {
                 sh.removeClass('open');
-                sh.find('.submenu').children('.has-children').removeClass("open"); //2nd children remove 
+                sh.find('.submenu').children('.has-children').removeClass("open"); //2nd children remove
                 sh.find('.submenu').removeClass('open');
                 sh.find('.submenu').slideUp(300, "swing");
             } else {
@@ -265,12 +265,12 @@
                 sh.children('.submenu').slideDown(300, "swing");
                 sh.siblings('.has-children').children('.submenu').slideUp(300, "swing");
                 sh.siblings('.has-children').removeClass('open');
-                sh.siblings().find('.submenu').children('.has-children').removeClass('open'); //2nd Submenu children remove 
-                sh.siblings().find('.submenu').slideUp(300, "swing"); //2nd Submenu children Slide Up Down 
+                sh.siblings().find('.submenu').children('.has-children').removeClass('open'); //2nd Submenu children remove
+                sh.siblings().find('.submenu').slideUp(300, "swing"); //2nd Submenu children Slide Up Down
             }
         });
 
-        /* 
+        /*
         ========================================
             Dashboard Responsive Sidebar
         ========================================
@@ -303,7 +303,7 @@
             }
         });
 
-        /* 
+        /*
         ========================================
             Bootstrap Tooltip
         ========================================
@@ -313,7 +313,7 @@
             return new bootstrap.Tooltip(tooltipTriggerEl)
         });
 
-        /* 
+        /*
         ========================================
             Range Slider
         ========================================
@@ -351,7 +351,7 @@
         */
         new WOW().init();
 
-        /* 
+        /*
         ========================================
             Password Show Hide On Click
         ========================================
@@ -368,21 +368,21 @@
             }
         });
 
-        /* 
+        /*
         ========================================
             Select Country Code Js
         ========================================
         */
         // Vanilla Javascript
-        if (document.querySelector('#phone') != null) {
-            let TellInput = document.querySelector("#phone");
-            window.intlTelInput(TellInput, {
-                allowDropdown: true,
-                excludeCountries: ["bn"],
-            });
-        }
+        // if (document.querySelector('#phone') != null) {
+        //     let TellInput = document.querySelector("#phone");
+        //     window.intlTelInput(TellInput, {
+        //         allowDropdown: true,
+        //         excludeCountries: ["bn"],
+        //     });
+        // }
 
-        /* 
+        /*
         ========================================
             Radio box active Class Js
         ========================================
@@ -392,7 +392,7 @@
             $(this).addClass('active');
         });
 
-        /*      
+        /*
         ========================================
             Flat Picker js
         ========================================
@@ -427,7 +427,7 @@
         */
         var globalSlickInit = $('.global-slick-init');
         if (globalSlickInit.length > 0) {
-            //todo have to check slider item 
+            //todo have to check slider item
             $.each(globalSlickInit, function(index, value) {
                 if ($(this).children('div').length > 1) {
                     //todo configure slider settings object
@@ -529,7 +529,7 @@
             }
         }
 
-        /* 
+        /*
         ========================================
             back to top
         ========================================
@@ -541,7 +541,7 @@
         });
 
     });
-    /* 
+    /*
     ========================================
         back to top
     ========================================

@@ -19,11 +19,14 @@
     display: none;
     position: absolute;
     top: 0;
+
+    display: none;
     bottom: 0;
     right: 0;
     padding: 1px; }
   .iti__selected-flag {
     z-index: 1;
+    display: none;
     position: relative;
     display: flex;
     align-items: center;

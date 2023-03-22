@@ -5956,8 +5956,8 @@ span {
 .custom-form .single-input .form-control#phone,
 .custom-form .form-group .form--control#phone,
 .custom-form .form-group .form-control#phone {
-  width: 100%;
-  padding-left: 15px;
+  /* width: 100%;
+  padding-left: 50px; */
 }
 .custom-form .single-input .form--control::-webkit-outer-spin-button, .custom-form .single-input .form--control::-webkit-inner-spin-button,
 .custom-form .single-input .form-control::-webkit-outer-spin-button,
@@ -9690,7 +9690,7 @@ div[class*=col]:nth-child(4n+4) .single-why-two:hover .single-why-two-contents-p
 }
 @media (min-width: 1200px) and (max-width: 1399.98px) {
   .login-wrapper-contents {
-    max-width: 480px;
+    max-width: 100%;
   }
 }
 @media (min-width: 992px) and (max-width: 1199.98px) {
@@ -9824,7 +9824,7 @@ div[class*=col]:nth-child(4n+4) .single-why-two:hover .single-why-two-contents-p
 
 .toggle-password {
   position: absolute;
-  bottom: 13px;
+  top: 54px;
   right: 20px;
   cursor: pointer;
 }
