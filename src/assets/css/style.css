@@ -9691,7 +9691,7 @@ div[class*=col]:nth-child(4n+4) .single-why-two:hover .single-why-two-contents-p
 }
 @media (min-width: 1200px) and (max-width: 1399.98px) {
   .login-wrapper-contents {
-    max-width: 480px;
+    max-width: 100%;
   }
 }
 @media (min-width: 992px) and (max-width: 1199.98px) {
@@ -9825,7 +9825,7 @@ div[class*=col]:nth-child(4n+4) .single-why-two:hover .single-why-two-contents-p
 
 .toggle-password {
   position: absolute;
-  bottom: 13px;
+  top: 54px;
   right: 20px;
   cursor: pointer;
 }
@@ -13805,4 +13805,9 @@ blockquote .blockquote-contents-title {
   font-weight: 600;
   line-height: 36px;
   margin: -4px 0 0;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }

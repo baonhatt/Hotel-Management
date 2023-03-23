@@ -1,12 +1,13 @@
+import { DOCUMENT } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, ValidationErrors } from '@angular/forms';
 import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit{
   loading = false;
@@ -19,16 +20,16 @@ export class SignupComponent implements OnInit{
   get f() {
     return this.signup.controls
   }
-  constructor(private http: HttpClient, private route: Router, private fb: FormBuilder){}
+  constructor(private http: HttpClient, private route: Router, private fb: FormBuilder, @Inject(DOCUMENT) private document: Document){}
   ngOnInit(): void {
+    this.injectScript("assets/js/signup/signup.js");
     this.signup = this.fb.group({
       name: ['',Validators.required, Validators.name],
       email: ['', [Validators.required ,Validators.email]],
       userName: ['',Validators.required, Validators.name],
       phoneNumber:['', Validators.required, Validators.pattern(' /^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$/')],
-
       password: ['',Validators.required,Validators.minLength(6)],
-      confirmPassword: ['',Validators.required, this.cfPass]
+      confirmPassword: ['',Validators.required, Validators.pattern(this.password)]
     })
   }
 
@@ -73,4 +74,13 @@ export class SignupComponent implements OnInit{
       }
     };
   }
+
+  public injectScript(src: string) {
+    if(this.document && src?.trim()) {
+        const script = this.document.createElement("script");
+        script.setAttribute("type","text/javascript");
+        script.setAttribute("src",src.trim());
+        this.document.head?.appendChild(script);
+    }
+}
 }
