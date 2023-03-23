@@ -1,4 +1,9 @@
+
+<head>
+
+</head>
 <section class="login-area padding-top-100 padding-bottom-100">
+
   <div class="container">
     <div class="login-wrapper login-shadow bg-white">
       <div class="login-wrapper-flex">
@@ -21,7 +26,7 @@
               [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
               <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
                 <div *ngIf="f['email'].errors['required']">Email is required</div>
-                <div *ngIf="f['email'].errors['required']">Email must be a valid email address</div>
+                <div *ngIf="f['email'].errors['email']">Email must be a valid email address</div>
             </div>
             </div>
 

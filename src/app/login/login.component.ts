@@ -3,8 +3,8 @@ import { HttpClient, HttpHandler, HttpHeaders, HttpRequest } from '@angular/comm
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, NgModel, Validators } from '@angular/forms';
 import { AuthService } from '../_service/auth.service';
-import { catchError, map, Observable } from 'rxjs';
 import { TokenModel } from '../_service/token.model';
+import { NgToastService} from 'ng-angular-popup'
 // import { AuthinterceptorInterceptor } from '../shared/auth/authinterceptor.interceptor';
 
 @Component({
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   get f() {
     return this.loginForm.controls
   }
-  constructor(private auth: AuthService, private fb: FormBuilder, private route: Router) { }
+  constructor(private auth: AuthService, private fb: FormBuilder, private route: Router, private toast: NgToastService) { }
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -32,20 +32,27 @@ export class LoginComponent implements OnInit {
     })
   }
 
+
   login() {
     const email = this.loginForm?.get('email')?.value;
     const password = this.loginForm?.get('password')?.value;
     this.auth.login(email, password).subscribe((response) => {
-      if (response ) {
-        var token = response as TokenModel
-        localStorage.setItem("token",JSON.stringify(token));
-        this.route.navigate(['home'],)
-        alert("Login successful!")
+
+
+          var token = response as TokenModel
+          localStorage.setItem("token",JSON.stringify(token));
+          this.route.navigate(['home'],)
+          response.message
+          this.toast.success({detail: "Welcome you !", summary:response.message, duration: 5000})
+          setInterval(() => {
+            window.location.reload()
+          }, 3000);
+
         this.userProfile = this.auth.userProfile
-        console.log(this.userProfile)
-      } else {
-        alert("Something was wrong!")
-      }
+        // console.log(this.userProfile)
+    },err=>{
+      this.toast.error({detail: "Error Message", summary:"Something was wrong !", duration: 5000})
+
     })
   }
 
@@ -63,4 +70,8 @@ export class LoginComponent implements OnInit {
 }
 
 
+
+function ionViewDidLoad() {
+
+}
 

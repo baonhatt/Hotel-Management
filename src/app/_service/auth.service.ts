@@ -6,6 +6,7 @@ import { TokenModel } from './token.model';
 import { LoginComponent } from '../login/login.component';
 import { User } from './user.model';
 import { StorageService } from './storage.service';
+import { NgToastService} from 'ng-angular-popup'
 
 HttpClient;
 const URL_BASE = 'https://webhotel.azurewebsites.net/';
@@ -15,7 +16,7 @@ const URL_BASE = 'https://webhotel.azurewebsites.net/';
 })
 export class AuthService {
   jwtService: JwtHelperService = new JwtHelperService();
-  constructor(private http: HttpClient, private storage: StorageService) {}
+  constructor(private http: HttpClient, private storage: StorageService, private toast: NgToastService) {}
   userProfile = new BehaviorSubject<User | null>(null);
 
   login(email: string, password: string) {
@@ -32,7 +33,8 @@ export class AuthService {
         return true;
       }),
       catchError((error) => {
-        alert(error);
+        error.
+        this.toast.error({detail: "Error Message", summary:" Please check your email or password again!", duration: 5000})
         return of(false);
       }),
     );

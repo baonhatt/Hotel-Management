@@ -6981,6 +6981,7 @@ span {
   visibility: visible;
   opacity: 1;
   top: 100%;
+  width: 100px;
   -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
           transform: matrix(1, 0, 0, 1, 0, 0);
 }

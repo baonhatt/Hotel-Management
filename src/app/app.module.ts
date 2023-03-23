@@ -20,6 +20,7 @@ import { FooterComponent } from './footer/footer.component';
 import { StorageService } from './_service/storage.service';
 import { EmailValidatorDirective } from './_shared/validator/email-validators.directive';
 import {  ValidatorFn, AbstractControl } from '@angular/forms';
+import { NgToastModule } from 'ng-angular-popup';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {  ValidatorFn, AbstractControl } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    NgToastModule,
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
