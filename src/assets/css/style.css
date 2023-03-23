@@ -58,11 +58,13 @@ html {
 }
 
 body {
-  margin: 0;
+
+  align-items: center;
+  justify-content: center;
   color: var(--body-color);
   font-family: var(--body-font);
   font-size: 16px;
-  line-height: 26px;
+  line-height: 30px;
 }
 @media only screen and (max-width: 480px) {
   body {
@@ -9624,9 +9626,10 @@ div[class*=col]:nth-child(4n+4) .single-why-two:hover .single-why-two-contents-p
 }
 
 .single-title {
-  font-size: 28px;
+  font-size: 35px;
   line-height: 36px;
   margin: -6px 0 0;
+  font-weight:700;
 }
 
 .single-para {
@@ -9654,6 +9657,9 @@ div[class*=col]:nth-child(4n+4) .single-why-two:hover .single-why-two-contents-p
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 25px 50px;
+  height: 700px;
+  border-radius: 25px;
+  padding: 50px;
 }
 @media (min-width: 1200px) and (max-width: 1399.98px) {
   .login-wrapper-flex {
@@ -9672,6 +9678,7 @@ div[class*=col]:nth-child(4n+4) .single-why-two:hover .single-why-two-contents-p
   }
 }
 .login-wrapper-thumb {
+  padding-top: 40px;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;

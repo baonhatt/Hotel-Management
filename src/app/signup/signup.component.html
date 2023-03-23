@@ -1,9 +1,9 @@
 <section class="l-area padding-top-100 padding-bottom-100">
-  <div class="container-fluid p-0">
+  <div class="container-fluid p-0 signup-container">
     <div class="login-wrapper login-shadow bg-white">
       <div class="login-wrapper-flex">
         <div class="login-wrapper-thumb">
-          <img src="assets/img/single-page/login.jpg" alt="img">
+          <img src="assets/img/single-page/login2.png" alt="img">
         </div>
         <div class="login-wrapper-contents login-padding">
           <h2 class="single-title"> Welcome! </h2>
@@ -46,7 +46,7 @@
                     <div *ngIf="f['phoneNumber'].errors['required']">
                       Phone Number is required.
                     </div>
-                    <div *ngIf="f['phoneNumber'].errors['pattern']">
+                    <div *ngIf="f['phoneNumber'].errors['patern']">
                       Please Follow your pattern: +84 Enter 10 digit phone Number.
                     </div>
                   </div>
@@ -67,11 +67,11 @@
                     <div class="" *ngIf="f['password'].errors['required']">
                       Password is required
                     </div>
-                    <div class="" *ngIf="f['password'].errors['minlength']">
-                      Password must be at least 6 characters
+                    <div class="" *ngIf="f['password'].errors['required']">
+                      Password must be at least 8 characters
                     </div>
                     <div class="" *ngIf="f['password'].errors['pattern']">
-                      at least one letter and one number and one char among @#$&!
+                      at least one letter and one number
                     </div>
                   </div>
                 </div>
@@ -86,7 +86,7 @@
                       <span class="hide-icon"> <i class="las la-eye"></i> </span>
                     </div>
                   <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
-                    <div class="inputerror" *ngIf="f['confirmPassword'].errors['pattern']">
+                    <div class="inputerror" *ngIf="f['confirmPassword'].errors['required']">
                       Password not match!
                     </div>
                   </div>
