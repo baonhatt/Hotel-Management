@@ -6983,7 +6983,7 @@ span {
   visibility: visible;
   opacity: 1;
   top: 100%;
-  width: 100px;
+  width: 140px;
   -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
           transform: matrix(1, 0, 0, 1, 0, 0);
 }
@@ -13803,7 +13803,7 @@ blockquote .blockquote-contents-title {
 
 /* Error Css */
 .error-wrapper-thumb img {
-  max-width: 700px;
+  max-width: 450px;
   margin-inline: auto;
 }
 

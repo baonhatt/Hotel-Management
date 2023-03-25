@@ -18,7 +18,7 @@
       <div class="collapse navbar-collapse" id="hotel_booking_menu">
         <ul class="navbar-nav">
           <li class=" current-menu-item">
-            <a href="javascript:void(0)">Home</a>
+            <a routerLink="/home">Home</a>
           </li>
           <li><a href="about.html"> About </a></li>
           <li><a href="checkout.html"> Checkout </a></li>
@@ -68,7 +68,7 @@
                   </div>
                   <div class="navbar-author-wrapper">
                     <div class="navbar-author-wrapper-list">
-                      <a href="signup.html" class="navbar-author-wrapper-list-item"> Sign Up </a>
+                      <a [routerLink]="['/user-profile']" class="navbar-author-wrapper-list-item"> My Profile </a>
                       <a href="login.html" class="navbar-author-wrapper-list-item"> Sign In </a>
                       <span class="navbar-author-wrapper-list-item" (click)="logout()"> Log Out </span>
                     </div>

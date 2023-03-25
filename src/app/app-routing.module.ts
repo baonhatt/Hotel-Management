@@ -5,6 +5,10 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthGuard } from './_helper/http.guard';
 import { RoomDetailComponent } from './room-detail/room-detail.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { ProfileComponent } from './client/profile/profile.component';
+import { LoaderService } from './_service/loader.service';
+import { SpinnerComponent } from './spinner/spinner.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
@@ -34,6 +38,22 @@ const routes: Routes = [
   {
     path: 'room-detail',
     component: RoomDetailComponent,
+    data : {
+      requiredAuth:false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'user-profile',
+    component: ProfileComponent,
+    data : {
+      requiredAuth:false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: '**',
+    component: PagenotfoundComponent,
     data : {
       requiredAuth:false
     },

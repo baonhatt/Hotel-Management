@@ -102,7 +102,7 @@
                   Conditions </a>,
                 and <a class="color-one" href="javascript:void(0)"> privacy policy </a> </label>
             </div>
-            <button class="submit-btn w-100 mt-3 disabled" type="submit" id="signup"> Sign Up Now </button>
+            <button class="submit-btn w-100 mt-3 disabled" type="submit" id="signup"> Sign Up Now <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>  </button>
             <span class="account color-light mt-3"> Already have an account? <a class="color-one" routerLink="/login">
                 Login </a> </span>
           </form>

@@ -21,6 +21,10 @@ import { StorageService } from './_service/storage.service';
 import { EmailValidatorDirective } from './_shared/validator/email-validators.directive';
 import {  ValidatorFn, AbstractControl } from '@angular/forms';
 import { NgToastModule } from 'ng-angular-popup';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { ProfileComponent } from './client/profile/profile.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { LoadingInterceptor } from './loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,9 @@ import { NgToastModule } from 'ng-angular-popup';
     DashboardComponent,
     RoomDetailComponent,
     FooterComponent,
+    PagenotfoundComponent,
+    ProfileComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +63,12 @@ import { NgToastModule } from 'ng-angular-popup';
       useClass: AuthTokenInterceptor,
       multi: true
     },
-    [AuthGuard]
+    [AuthGuard],
+    [
+      {
+        provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
+      }
+    ]
   ],
   bootstrap: [AppComponent],
 })

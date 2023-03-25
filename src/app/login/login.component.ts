@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   req: HttpRequest<any> | undefined
   email: any;
   password: any;
+  loading = false;
   loginForm!: FormGroup;
   data: any;
   userProfile: any;
@@ -58,6 +59,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    this.loading = true;
 
     // stop here if form is invalid
     if (this.loginForm.invalid) {

@@ -1,4 +1,5 @@
 <app-header></app-header>
+<app-spinner></app-spinner>
 <button (click)="getData()">Get</button>
 <div class="banner-area banner-area-one">
   <div class="container-fluid p-0">
@@ -13,10 +14,10 @@
               <div class="banner-location-flex">
                 <div class="banner-location-single">
                   <div class="banner-location-single-flex">
-                    <div class="banner-location-single-icon">
+                    <!-- <div class="banner-location-single-icon">
                       <i class="las la-map-marker-alt"></i>
-                    </div>
-                    <div class="banner-location-single-contents">
+                    </div> -->
+                    <!-- <div class="banner-location-single-contents">
                       <span class="banner-location-single-contents-subtitle"> Location </span>
                       <div class="banner-location-single-contents-dropdown">
                         <select class="js-select select-style-two" name="state">
@@ -26,7 +27,7 @@
                           <option value="4">Allentown, Paris</option>
                         </select>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
                 <div class="banner-location-single">
@@ -670,7 +671,7 @@
       <div class="col-xxl-4 col-lg-4 col-md-6">
         <div class="single-blog">
           <div class="single-blog-thumbs">
-            <a href="blog_details.html"> <img class="lazyloads" src="assets/img/blog/blog1.jpg" alt=""> </a>
+            <a [routerLink]="['/room-detail']"> <img class="lazyloads" src="assets/img/blog/blog1.jpg" alt=""> </a>
             <div class="single-blog-thumbs-date">
               <a href="javascript:void(0)"> <span class="date"> 18 </span> <span class="month"> Jun </span> </a>
             </div>
@@ -682,7 +683,7 @@
               </span>
               <span class="single-blog-contents-tags-item"> <a href="javascript:void(0)"> 22 Comments </a> </span>
             </div>
-            <h4 class="single-blog-contents-title mt-3"> <a href="blog_details.html"> Great Deals to Send Your Loved
+            <h4 class="single-blog-contents-title mt-3"> <a [routerLink]="['/room-detail']"> Great Deals to Send Your Loved
                 Ones Somewhere Nice </a> </h4>
           </div>
         </div>
@@ -690,7 +691,7 @@
       <div class="col-xxl-4 col-lg-4 col-md-6">
         <div class="single-blog">
           <div class="single-blog-thumbs">
-            <a href="blog_details.html"> <img class="lazyloads" src="assets/img/blog/blog2.jpg" alt=""> </a>
+            <a [routerLink]="['/room-detail']"> <img class="lazyloads" src="assets/img/blog/blog2.jpg" alt=""> </a>
             <div class="single-blog-thumbs-date">
               <a href="javascript:void(0)"> <span class="date"> 19 </span> <span class="month"> Jun </span> </a>
             </div>
@@ -702,7 +703,7 @@
               </span>
               <span class="single-blog-contents-tags-item"> <a href="javascript:void(0)"> 25 Comments </a> </span>
             </div>
-            <h4 class="single-blog-contents-title mt-3"> <a href="blog_details.html"> Read Real Guest Reviews. 24/7
+            <h4 class="single-blog-contents-title mt-3"> <a [routerLink]="['/room-detail']"> Read Real Guest Reviews. 24/7
                 Customer Service and others. </a> </h4>
           </div>
         </div>
@@ -710,7 +711,7 @@
       <div class="col-xxl-4 col-lg-4 col-md-6">
         <div class="single-blog">
           <div class="single-blog-thumbs">
-            <a href="blog_details.html"> <img class="lazyloads" src="assets/img/blog/blog3.jpg" alt=""> </a>
+            <a [routerLink]="['/room-detail']"> <img class="lazyloads" src="assets/img/blog/blog3.jpg" alt=""> </a>
             <div class="single-blog-thumbs-date">
               <a href="javascript:void(0)"> <span class="date"> 20 </span> <span class="month"> Jun </span> </a>
             </div>
@@ -722,7 +723,7 @@
               </span>
               <span class="single-blog-contents-tags-item"> <a href="javascript:void(0)"> 12 Comments </a> </span>
             </div>
-            <h4 class="single-blog-contents-title mt-3"> <a href="blog_details.html"> Compare hotel prices and find an
+            <h4 class="single-blog-contents-title mt-3"> <a [routerLink]="['/room-detail']"> Compare hotel prices and find an
                 amazing price for the Resort </a> </h4>
           </div>
         </div>
@@ -818,3 +819,5 @@
 
 <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script src="assets/js/jquery-3.6.0.min.js"></script>
+<app-footer></app-footer>
+<script type='text/javascript' defer src='https://bytesed.com/wp-content/plugins/contact-form-7/modules/recaptcha/index.js?ver=5.7.3' id='wpcf7-recaptcha-js'></script>
