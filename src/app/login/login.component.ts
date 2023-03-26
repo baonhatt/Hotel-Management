@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
           }, 3000);
 
         this.userProfile = this.auth.userProfile
+        this.loading = true;
         // console.log(this.userProfile)
     },err=>{
       this.toast.error({detail: "Error Message", summary:"Something was wrong !", duration: 5000})
@@ -59,7 +60,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.loading = true;
 
     // stop here if form is invalid
     if (this.loginForm.invalid) {
@@ -73,7 +73,5 @@ export class LoginComponent implements OnInit {
 
 
 
-function ionViewDidLoad() {
 
-}
 

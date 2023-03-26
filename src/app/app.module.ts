@@ -25,6 +25,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ProfileComponent } from './client/profile/profile.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { LoadingInterceptor } from './loading.interceptor';
+import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { LoadingInterceptor } from './loading.interceptor';
     PagenotfoundComponent,
     ProfileComponent,
     SpinnerComponent,
+    ForgetpasswordComponent,
+    ResetpasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,8 +86,8 @@ export function jwtOptionsFactor(storage:StorageService){
     },
     allowedDomains:["webhotel.azurewebsites.net"],
     disallowedRoutes:[
-      "webhotel.azurewebsites.net/api/Authorization/Login",
-      "webhotel.azurewebsites.net/api/Token/Refresh"
+      "metaron1997-001-site1.ftempurl.com/api/Authorization/Login",
+      "metaron1997-001-site1.ftempurl.com/api/Token/Refresh"
     ],
     skipWhenExpired: false,
   }

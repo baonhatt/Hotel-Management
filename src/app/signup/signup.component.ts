@@ -35,7 +35,7 @@ export class SignupComponent implements OnInit{
 
   signupdata(signup: FormGroup){
 
-    this.http.post<any>("https://webhotel.azurewebsites.net/api/Authorization/Registration", this.signup.value)
+    this.http.post<any>("http://metaron1997-001-site1.ftempurl.com/api/Authorization/Registration", this.signup.value)
     .subscribe(res =>{
       alert("Create an account successfully!");
 

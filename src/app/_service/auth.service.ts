@@ -7,9 +7,9 @@ import { LoginComponent } from '../login/login.component';
 import { User } from './user.model';
 import { StorageService } from './storage.service';
 import { NgToastService} from 'ng-angular-popup'
-
+// import { TranslateService } from "@ngx-translate/core";
 HttpClient;
-const URL_BASE = 'https://webhotel.azurewebsites.net/';
+const URL_BASE = 'http://metaron1997-001-site1.ftempurl.com';
 
 @Injectable({
   providedIn: 'root',
@@ -42,7 +42,7 @@ export class AuthService {
 
   refreshToken(login: TokenModel) {
     return this.http.post<TokenModel>(
-      'https://webhotel.azurewebsites.net/api/Token/Refresh',
+      'http://metaron1997-001-site1.ftempurl.com/api/Token/Refresh',
       login
     );
   }

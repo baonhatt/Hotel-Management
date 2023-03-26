@@ -9,6 +9,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ProfileComponent } from './client/profile/profile.component';
 import { LoaderService } from './_service/loader.service';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
@@ -46,6 +48,22 @@ const routes: Routes = [
   {
     path: 'user-profile',
     component: ProfileComponent,
+    data : {
+      requiredAuth:false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'forgot-password',
+    component: ForgetpasswordComponent,
+    data : {
+      requiredAuth:false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'reset-password',
+    component: ResetpasswordComponent,
     data : {
       requiredAuth:false
     },
