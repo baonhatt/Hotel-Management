@@ -9,7 +9,7 @@ import { StorageService } from './storage.service';
 import { NgToastService} from 'ng-angular-popup'
 // import { TranslateService } from "@ngx-translate/core";
 HttpClient;
-const URL_BASE = 'http://metaron1997-001-site1.ftempurl.com';
+const URL_BASE = 'https://localhost:44380';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +24,7 @@ export class AuthService {
       email: email,
       password: password,
     };
-    return this.http.post<any>(URL_BASE + 'api/Authorization/Login', body).pipe(
+    return this.http.post<any>(URL_BASE + '/api/Authorization/Login', body).pipe(
       tap((response) => {
         let token = response as TokenModel;
         this.storage.setToken(token);
@@ -42,7 +42,7 @@ export class AuthService {
 
   refreshToken(login: TokenModel) {
     return this.http.post<TokenModel>(
-      'http://metaron1997-001-site1.ftempurl.com/api/Token/Refresh',
+      'https://localhost:44380/api/Token/Refresh',
       login
     );
   }

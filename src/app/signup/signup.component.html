@@ -33,7 +33,7 @@
                   <input class="form-control" type="name" id="name" formControlName="name" placeholder="Type Full Name"
                     [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" />
                   <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
-                    <div *ngIf="f['name'].errors['required']">First Name is required</div>
+                    <div *ngIf="f['name'].errors['required']">Full Name is required</div>
                   </div>
                 </div>
               </div>

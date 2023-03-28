@@ -8,24 +8,22 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent implements OnInit {
+
+
+
   constructor(private http: HttpClient) {
+
   }
+
   ngOnInit(): void {
-    window.addEventListener( "pageshow", function ( event ) {
-      var historyTraversal = event.persisted ||
-                             ( typeof window.performance != "undefined" &&
-                                  window.performance.navigation.type === 2 );
-      if ( historyTraversal ) {
-        // Handle page restore.
-        window.location.reload();
-      }
-    });
+
+
   }
   getData() {
 
     const headers = new HttpHeaders()
 
-    this.http.get('https://webhotel.azurewebsites.net/WeatherForecast', { headers, responseType: 'text' }).subscribe(res => {
+    this.http.get('https://localhost:44380/api/WeatherForecast', { headers, responseType: 'text' }).subscribe(res => {
       console.log(res);
     });
   }

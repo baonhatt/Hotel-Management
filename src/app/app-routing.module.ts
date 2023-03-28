@@ -11,6 +11,8 @@ import { LoaderService } from './_service/loader.service';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { ContactComponent } from './contact/contact.component';
+import { ListingComponent } from './listing/listing.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
@@ -64,6 +66,22 @@ const routes: Routes = [
   {
     path: 'reset-password',
     component: ResetpasswordComponent,
+    data : {
+      requiredAuth:false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'contact',
+    component: ContactComponent,
+    data : {
+      requiredAuth:false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'room-listing',
+    component: ListingComponent,
     data : {
       requiredAuth:false
     },

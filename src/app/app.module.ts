@@ -27,6 +27,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { LoadingInterceptor } from './loading.interceptor';
 import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { ContactComponent } from './contact/contact.component';
+import { ListingComponent } from './listing/listing.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
     SpinnerComponent,
     ForgetpasswordComponent,
     ResetpasswordComponent,
+    ContactComponent,
+    ListingComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,10 +88,10 @@ export function jwtOptionsFactor(storage:StorageService){
     tokenGetter:() => {
       return storage.getAccessToken();
     },
-    allowedDomains:["webhotel.azurewebsites.net"],
+    allowedDomains:["https://localhost:44380"],
     disallowedRoutes:[
-      "metaron1997-001-site1.ftempurl.com/api/Authorization/Login",
-      "metaron1997-001-site1.ftempurl.com/api/Token/Refresh"
+      "https://localhost:44380/api/Authorization/Login",
+      "https://localhost:44380/api/Token/Refresh"
     ],
     skipWhenExpired: false,
   }
