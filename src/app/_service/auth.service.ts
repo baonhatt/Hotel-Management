@@ -6,7 +6,7 @@ import { TokenModel } from './token.model';
 import { User } from './user.model';
 import { StorageService } from './storage.service';
 import { NgToastService} from 'ng-angular-popup'
-import { BASE_URL_API } from 'src/environments/environment';
+import { environment } from '../../environments/environment.development';
 // import { TranslateService } from "@ngx-translate/core";
 
 @Injectable({
@@ -16,13 +16,12 @@ export class AuthService {
   jwtService: JwtHelperService = new JwtHelperService();
   constructor(private http: HttpClient, private storage: StorageService, private jwtHelper: JwtHelperService, private toast: NgToastService) {}
   userProfile = new BehaviorSubject<User | null>(null);
-
   login(email: string, password: string) {
     const body = {
       email: email,
       password: password,
     };
-    return this.http.post<any>(BASE_URL_API + '/api/Authorization/Login', body).pipe(
+    return this.http.post<any>(environment.BASE_URL_API + '/api/Authorization/Login', body).pipe(
       tap((response) => {
         let token = response as TokenModel;
         this.storage.setToken(token);
@@ -40,7 +39,7 @@ export class AuthService {
 
   refreshToken(login: TokenModel) {
     return this.http.post<TokenModel>(
-      BASE_URL_API+'/api/Token/Refresh',
+      environment.BASE_URL_API+'/api/Token/Refresh',
       login
     );
   }
