@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, FormControl, NgModel, Validators } from '@angul
 import { AuthService } from '../_service/auth.service';
 import { TokenModel } from '../_service/token.model';
 import { NgToastService} from 'ng-angular-popup'
+import { BASE_URL_WEB } from 'src/environments/environment';
 // import { AuthinterceptorInterceptor } from '../shared/auth/authinterceptor.interceptor';
 
 @Component({
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   routeReset(){
-    window.location.href=`http://localhost:4200/reset-password?code=reset`
+    window.location.href=BASE_URL_WEB + `/reset-password?code=reset`
   }
   login() {
     const email = this.loginForm?.get('email')?.value;

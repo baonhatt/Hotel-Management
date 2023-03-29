@@ -3,13 +3,11 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
 import { TokenModel } from './token.model';
-import { LoginComponent } from '../login/login.component';
 import { User } from './user.model';
 import { StorageService } from './storage.service';
 import { NgToastService} from 'ng-angular-popup'
+import { BASE_URL_API } from 'src/environments/environment';
 // import { TranslateService } from "@ngx-translate/core";
-HttpClient;
-const URL_BASE = 'https://localhost:44380';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +22,7 @@ export class AuthService {
       email: email,
       password: password,
     };
-    return this.http.post<any>(URL_BASE + '/api/Authorization/Login', body).pipe(
+    return this.http.post<any>(BASE_URL_API + '/api/Authorization/Login', body).pipe(
       tap((response) => {
         let token = response as TokenModel;
         this.storage.setToken(token);
@@ -42,7 +40,7 @@ export class AuthService {
 
   refreshToken(login: TokenModel) {
     return this.http.post<TokenModel>(
-      'https://localhost:44380/api/Token/Refresh',
+      BASE_URL_API+'/api/Token/Refresh',
       login
     );
   }

@@ -1,2 +1,3 @@
 export const environment = {};
-export const bareUrl = "http://metaron23-001-site1.itempurl.com/api/Authorization/Login";
+export const BASE_URL_API = "http://webhotel-dev.eba-sinfmkxf.ap-south-1.elasticbeanstalk.com";
+export const BASE_URL_WEB = "http://localhost:4200";

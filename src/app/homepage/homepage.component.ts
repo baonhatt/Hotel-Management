@@ -19,13 +19,4 @@ export class HomepageComponent implements OnInit {
 
 
   }
-  getData() {
-
-    const headers = new HttpHeaders()
-
-    this.http.get('https://localhost:44380/api/WeatherForecast', { headers, responseType: 'text' }).subscribe(res => {
-      console.log(res);
-    });
-  }
-
 }

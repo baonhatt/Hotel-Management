@@ -9,12 +9,9 @@ import { AuthService } from './auth.service';
 })
 export class ApiService {
   constructor(private http: HttpClient ,private auth: AuthService) {}
-
   user: any;
   room: any;
   baseUrl = 'http://localhost:3000/rooms';
-
-
 
   getRooms() {
     return this.http.get<Room[]>(this.baseUrl);
