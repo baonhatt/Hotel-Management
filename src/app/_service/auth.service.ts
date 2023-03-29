@@ -14,7 +14,9 @@ import { environment } from '../../environments/environment.development';
 })
 export class AuthService {
 
-// `${}/`;
+
+
+
   jwtService: JwtHelperService = new JwtHelperService();
   constructor(private http: HttpClient, private storage: StorageService, private jwtHelper: JwtHelperService, private toast: NgToastService) { }
   userProfile = new BehaviorSubject<User | null>(null);
@@ -25,6 +27,8 @@ export class AuthService {
     };
     return this.http.post<any>(environment.BASE_URL_API + '/api/Authorization/Login', body).pipe(
       tap((response) => {
+
+
         let token = response as TokenModel;
         this.storage.setToken(token);
         var userInfo = this.jwtService.decodeToken(token.accessToken) as User;
@@ -64,6 +68,7 @@ export class AuthService {
       var tokenModel = JSON.parse(token) as TokenModel;
       var userInfo = this.jwtService.decodeToken(
         tokenModel.accessToken
+
       ) as User;
       return userInfo.UserName;
     }

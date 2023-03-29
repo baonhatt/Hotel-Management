@@ -27,6 +27,10 @@ export class ForgetpasswordComponent implements OnInit {
 
    get f() { return this.form.controls; }
 
+
+   sendMail(){
+    
+   }
    onSubmit() {
        this.submitted = true;
 
@@ -40,11 +44,5 @@ export class ForgetpasswordComponent implements OnInit {
 
        this.loading = true;
       //  this.alertService.clear();
-       this.auth.forgotPassword(this.f['email'].value)
-           .pipe(first())
-           .pipe(finalize(() => this.loading = false))
-           .subscribe({
-               next:() => alert("please check your email")
-           });
    }
 }

@@ -1,5 +1,5 @@
 export class User {
-  Id!: String;
+  jti!: String;
   UserName!: String;
   Email!: String;
   Roles!: string
