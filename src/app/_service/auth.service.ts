@@ -25,13 +25,14 @@ export class AuthService {
       email: email,
       password: password,
     };
-    return this.http.post<any>(environment.BASE_URL_API + '/api/Authorization/Login', body).pipe(
+    return this.http.post<any>(environment.BASE_URL_API + '/api/Authen/Login', body).pipe(
       tap((response) => {
 
 
         let token = response as TokenModel;
         this.storage.setToken(token);
-        var userInfo = this.jwtService.decodeToken(token.accessToken) as User;
+        var claims = JSON.stringify(this.jwtService.decodeToken(token.accessToken));
+        var userInfo = JSON.parse(claims.replaceAll("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/","")) as User;
         this.userProfile.next(userInfo);
         return true;
       }),
@@ -66,11 +67,9 @@ export class AuthService {
     var token = localStorage.getItem('token');
     if (token) {
       var tokenModel = JSON.parse(token) as TokenModel;
-      var userInfo = this.jwtService.decodeToken(
-        tokenModel.accessToken
-
-      ) as User;
-      return userInfo.UserName;
+      var claims = JSON.stringify(this.jwtService.decodeToken(tokenModel.accessToken));
+      var userInfo = JSON.parse(claims.replaceAll("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/","")) as User;
+      return userInfo.name;
     }
     return null;
   }

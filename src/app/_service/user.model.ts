@@ -1,6 +1,6 @@
 export class User {
   jti!: String;
-  UserName!: String;
-  Email!: String;
+  name!: String;
+  emailaddress!: String;
   Roles!: string
 }
