@@ -5,7 +5,7 @@ import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
 import { TokenModel } from './token.model';
 import { User } from './user.model';
 import { StorageService } from './storage.service';
-import { NgToastService} from 'ng-angular-popup'
+import { NgToastService } from 'ng-angular-popup'
 import { environment } from '../../environments/environment.development';
 // import { TranslateService } from "@ngx-translate/core";
 
@@ -13,8 +13,10 @@ import { environment } from '../../environments/environment.development';
   providedIn: 'root',
 })
 export class AuthService {
+
+// `${}/`;
   jwtService: JwtHelperService = new JwtHelperService();
-  constructor(private http: HttpClient, private storage: StorageService, private jwtHelper: JwtHelperService, private toast: NgToastService) {}
+  constructor(private http: HttpClient, private storage: StorageService, private jwtHelper: JwtHelperService, private toast: NgToastService) { }
   userProfile = new BehaviorSubject<User | null>(null);
   login(email: string, password: string) {
     const body = {
@@ -32,7 +34,7 @@ export class AuthService {
       }),
       catchError((error) => {
         error.
-        this.toast.error({detail: "Error Message", summary:" Please check your email or password again!", duration: 5000})
+          this.toast.error({ detail: "Error Message", summary: " Please check your email or password again!", duration: 5000 })
         return of(false);
       }),
     );
@@ -40,7 +42,7 @@ export class AuthService {
 
   refreshToken(login: TokenModel) {
     return this.http.post<TokenModel>(
-      environment.BASE_URL_API+'/api/Token/Refresh',
+      environment.BASE_URL_API + '/api/Token/Refresh',
       login
     );
   }
@@ -68,19 +70,19 @@ export class AuthService {
     return null;
   }
 
-  public checkAccessTokenAndRefresh(): {status : "", token: ""} {
+  public checkAccessTokenAndRefresh(): { status: "", token: "" } {
     const localStorageTokens = localStorage.getItem('token');
     var check = true;
     if (localStorageTokens) {
       var token = JSON.parse(localStorageTokens) as TokenModel;
       var isTokenExpired = this.jwtHelper.isTokenExpired(token.accessToken);
-      if(isTokenExpired){
+      if (isTokenExpired) {
         this.refreshToken(token).subscribe(
           (tokenNew: TokenModel) => {
             localStorage.setItem('token', JSON.stringify(tokenNew));
             return Object({
-              status : check,
-              token : tokenNew,
+              status: check,
+              token: tokenNew,
             });
           },
           err => {
@@ -89,12 +91,27 @@ export class AuthService {
           }
         );
       }
-    }else{
+    } else {
       check = false;
     }
     return Object({
-      status : check,
+      status: check,
     });
+  }
+  verifyEmail(token: string) {
+    return this.http.post(`${environment.BASE_URL_API}/api/Authorization/RequestResetPassword`, { token });
+  }
+
+  forgotPassword(email: string) {
+    return this.http.post(`${environment.BASE_URL_API}/forgot-password`, { email });
+  }
+
+  validateResetToken(token: string) {
+    return this.http.post(`${environment.BASE_URL_API}/validate-reset-token`, { token });
+  }
+
+  resetPassword(token: string, password: string, confirmPassword: string) {
+    return this.http.post(`${environment.BASE_URL_API}/reset-password`, { token, password, confirmPassword });
   }
 
 }
