@@ -1,6 +1,6 @@
 export class User {
-  Id!: String;
-  UserName!: String;
-  Email!: String;
+  jti!: String;
+  name!: String;
+  emailaddress!: String;
   Roles!: string
 }
