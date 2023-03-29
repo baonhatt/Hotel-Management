@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent  implements OnInit{
   ngOnInit(): void {
-    
+
   }
   title = 'hotel';
 
-
+  logEmail(email: string) {
+    console.log(email);
+  }
 }
