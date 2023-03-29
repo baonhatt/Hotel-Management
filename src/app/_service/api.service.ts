@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Room } from '../models/room.model';
 import { AuthService } from './auth.service';
 
@@ -18,6 +18,12 @@ export class ApiService {
 
   getRooms() {
     return this.http.get<Room[]>(this.baseUrl);
+  }
+  getRoomDetail(id: number): Observable<Room |undefined>{
+    return this.getRooms()
+    .pipe(
+      map((rooms: Room[]) => rooms.find(p => p.id === id))
+    );
   }
 
   postRoom(_room: Room) {

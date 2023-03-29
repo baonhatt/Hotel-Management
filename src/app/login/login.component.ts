@@ -33,7 +33,9 @@ export class LoginComponent implements OnInit {
     })
   }
 
-
+  routeReset(){
+    window.location.href=`http://localhost:4200/reset-password?code=reset`
+  }
   login() {
     const email = this.loginForm?.get('email')?.value;
     const password = this.loginForm?.get('password')?.value;

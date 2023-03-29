@@ -18,80 +18,80 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    data : {
-      requiredAuth:false
+    data: {
+      requiredAuth: false
     },
     canActivate: [AuthGuard]
   },
   {
     path: 'signup',
     component: SignupComponent,
-    data : {
-      requiredAuth:false
+    data: {
+      requiredAuth: false
     },
     canActivate: [AuthGuard]
   },
   {
     path: 'home',
     component: HomepageComponent,
-    data : {
-      requiredAuth:false
+    data: {
+      requiredAuth: false
     },
     canActivate: [AuthGuard]
   },
   {
     path: 'room-detail',
     component: RoomDetailComponent,
-    data : {
-      requiredAuth:false
+    data: {
+      requiredAuth: false
     },
     canActivate: [AuthGuard]
   },
   {
     path: 'user-profile',
     component: ProfileComponent,
-    data : {
-      requiredAuth:false
+    data: {
+      requiredAuth: false
     },
     canActivate: [AuthGuard]
   },
   {
     path: 'forgot-password',
     component: ForgetpasswordComponent,
-    data : {
-      requiredAuth:false
+    data: {
+      requiredAuth: false
     },
     canActivate: [AuthGuard]
   },
   {
     path: 'reset-password',
     component: ResetpasswordComponent,
-    data : {
-      requiredAuth:false
+    data: {
+      requiredAuth: false
     },
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   {
     path: 'contact',
     component: ContactComponent,
-    data : {
-      requiredAuth:false
+    data: {
+      requiredAuth: false
     },
     canActivate: [AuthGuard]
   },
   {
     path: 'room-listing',
     component: ListingComponent,
-    data : {
-      requiredAuth:false
+    data: {
+      requiredAuth: false
     },
     canActivate: [AuthGuard]
   },
   {
     path: '**',
     component: PagenotfoundComponent,
-    data : {
-      requiredAuth:false
+    data: {
+      requiredAuth: false
     },
     canActivate: [AuthGuard]
   },

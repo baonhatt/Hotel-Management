@@ -13,6 +13,7 @@ import { AuthService } from '../_service/auth.service';
 import { StorageService } from '../_service/storage.service';
 import { User } from '../_service/user.model';
 
+
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(private auth: AuthService, private router: Router, private storage: StorageService) {}
@@ -20,11 +21,15 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
+
+
   ):
     | boolean
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
+      const id = Number(route.paramMap.get('id'));
+
     var check = this.auth.checkAccessTokenAndRefresh();
     console.log(check.status);
     var token = this.storage.isLoggedIn();
@@ -41,5 +46,7 @@ export class AuthGuard implements CanActivate {
       }
       return true;
     }
+
+
   }
 }

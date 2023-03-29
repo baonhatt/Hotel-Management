@@ -29,7 +29,7 @@ import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.compone
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { ContactComponent } from './contact/contact.component';
 import { ListingComponent } from './listing/listing.component';
-
+import { RoomDetailGuard } from './_helper/room-detail.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +52,13 @@ import { ListingComponent } from './listing/listing.component';
     BrowserModule,
     NgToastModule,
     AppRoutingModule,
-    RouterModule,
+    RouterModule.forChild([{ path: 'products', component: ListingComponent },
+    {
+      path: 'products/:id',
+      canActivate: [RoomDetailComponent],
+      component: RoomDetailComponent
+    }])
+    ,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
