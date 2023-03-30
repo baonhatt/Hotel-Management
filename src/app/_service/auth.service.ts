@@ -103,22 +103,16 @@ export class AuthService {
     });
   }
 
-  forgotPassword(email: any):Observable<any>{
-    return this.http.get(`${environment.BASE_URL_API}/api/Authen/RequestResetPassword/ ${'?='} ${email}`);
+  requestChangePassword(email:string, clientURI:string) : Observable<any>{
+    return this.http.post(`${environment.BASE_URL_API}/api/Authen/RequestChangePassword`,{email, clientURI})
   }
 
+  // validateResetToken(token: string) {
+  //   return this.http.post(`${environment.BASE_URL_API}/validate-reset-token`, { token });
+  // }
 
-
-  fosrgotPassword(email:any) : Observable<any>{
-    return this.http.post(`${environment.BASE_URL_API}/forgotpassword`,email)
-  }
-
-  validateResetToken(token: string) {
-    return this.http.post(`${environment.BASE_URL_API}/validate-reset-token`, { token });
-  }
-
-  resetPassword(token: string, password: string, confirmPassword: string) {
-    return this.http.post(`${environment.BASE_URL_API}/reset-password`, { token, password, confirmPassword });
+  changePassword(token: string, newPassword: string, confirmNewPassword: string, email:string): Observable<any> {
+    return this.http.post(`${environment.BASE_URL_API}/api/Authen/ConfirmChangePassword`, { token, newPassword, confirmNewPassword, email });
   }
 
 }

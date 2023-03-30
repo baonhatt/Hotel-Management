@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { finalize, first } from 'rxjs';
+import { environment } from 'src/environments/environment.development';
 import { AuthService } from '../_service/auth.service'
 @Component({
   selector: 'app-forgetpassword',
@@ -21,38 +22,22 @@ export class ForgetpasswordComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]]
     });
   }
-
-  // convenience getter for easy access to form fields
-
-
-
   get f() { return this.form.controls; }
-
-
-
-
-
   onSubmit() {
     this.submitted = true;
-
-    // reset alerts on submit
-    //  this.alertService.clear();
-
-    // stop here if form is invalid
     if (this.form.invalid) {
       return;
     }
 
     this.loading = true;
 
-    this.auth.forgotPassword(this.form.value)
+    this.auth.requestChangePassword(this.form.value.email, environment.BASE_URL_WEB+"/reset-password")
       .subscribe((result_resetpasswordstatus) => {
-        if (result_resetpasswordstatus.code == 200) {
-          alert("ok")
+        if (result_resetpasswordstatus.statusCode == 1) {
+          alert("ok");
         }
         else {
-          alert("not ok")
-
+          alert("not ok");
         }
       },
         (err) => {
