@@ -15,7 +15,7 @@ import { environment } from '../../environments/environment.development';
 export class AuthService {
 
 
-
+  email: any;
 
   jwtService: JwtHelperService = new JwtHelperService();
   constructor(private http: HttpClient, private storage: StorageService, private jwtHelper: JwtHelperService, private toast: NgToastService) { }
@@ -102,12 +102,15 @@ export class AuthService {
       status: check,
     });
   }
-  verifyEmail(token: string) {
-    return this.http.post(`${environment.BASE_URL_API}/api/Authorization/RequestResetPassword`, { token });
+
+  forgotPassword(email: any):Observable<any>{
+    return this.http.get(`${environment.BASE_URL_API}/api/Authen/RequestResetPassword/ ${'?='} ${email}`);
   }
 
-  forgotPassword(email: string) {
-    return this.http.post(`${environment.BASE_URL_API}/forgot-password`, { email });
+
+
+  fosrgotPassword(email:any) : Observable<any>{
+    return this.http.post(`${environment.BASE_URL_API}/forgotpassword`,email)
   }
 
   validateResetToken(token: string) {
