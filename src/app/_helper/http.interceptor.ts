@@ -33,6 +33,7 @@ export class AuthTokenInterceptor implements HttpInterceptor {
     private jwtHelper: JwtHelperService,
     private authService: AuthService,
     private router: Router,
+    private store: StorageService,
   ) {}
   intercept(
     req: HttpRequest<any>,
@@ -40,8 +41,14 @@ export class AuthTokenInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     let authReq = req;
     if(req.url.indexOf('login') > 0 || req.url.indexOf('token/refresh') > 0){
-      console.log("Đã vào login or refresh token");
       return next.handle(req);
+    }
+
+    var accessToken = this.store.getAccessToken();
+    var isTokenExpired = this.jwtHelper.isTokenExpired(accessToken);
+    if(isTokenExpired == false)
+    {
+      return next.handle(this.addTokenHeader(req, accessToken));
     }
 
     return next.handle(authReq).pipe(
@@ -58,7 +65,6 @@ export class AuthTokenInterceptor implements HttpInterceptor {
   private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
     var result = this.authService.checkAccessTokenAndRefresh();
     this.refreshTokenSubject.next(null);
-    console.log(result.status);
 
     if(result.status){
       this.refreshTokenSubject.next(result.token);

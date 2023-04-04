@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthTokenInterceptor } from './_helper/http.interceptor';
 import { HeaderComponent } from './header/header.component';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
-// import { CanActivate } from '@angular/router';
+import { CanActivate } from '@angular/router';
 import { AuthGuard } from './_helper/http.guard';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { RoomDetailComponent } from './room-detail/room-detail.component';

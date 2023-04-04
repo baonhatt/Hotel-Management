@@ -28,9 +28,8 @@ export class ProfileComponent {
   }
 
   getUserProfile(){
-    this.userService.getUserProfile().subscribe((res:userProfile)=>{
-      this.userProfile = res
-
+    this.userService.getUserProfile().subscribe((res:userProfile) => {
+      this.userProfile = res;
     })
   }
 
