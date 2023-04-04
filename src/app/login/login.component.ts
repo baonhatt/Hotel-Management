@@ -40,7 +40,8 @@ export class LoginComponent implements OnInit {
     private auth: AuthService,
     private fb: FormBuilder,
     private route: Router,
-    private toast: NgToastService
+    private toast: NgToastService,
+    private http: HttpClient
   ) {}
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -60,11 +61,13 @@ export class LoginComponent implements OnInit {
     window.location.href =
       environment.BASE_URL_WEB + `/reset-password?code=reset`;
   }
+
   login() {
     const email = this.loginForm?.get('email')?.value;
     const password = this.loginForm?.get('password')?.value;
     this.auth.login(email, password).subscribe(
       (response) => {
+
         var token = response as TokenModel;
         localStorage.setItem('token', JSON.stringify(token));
         this.route.navigate(['home']);
@@ -72,7 +75,7 @@ export class LoginComponent implements OnInit {
         this.userProfile = this.auth.userProfile;
         this.loading = true;
         window.location.reload();
-        // console.log(this.userProfile)
+
       },
       (err) => {
         this.toast.error({
@@ -84,6 +87,13 @@ export class LoginComponent implements OnInit {
     );
   }
 
+
+  getUserData(){
+
+      window.self.close();
+
+
+  }
   onSubmit() {
     this.submitted = true;
 
@@ -95,3 +105,4 @@ export class LoginComponent implements OnInit {
     this.login();
   }
 }
+

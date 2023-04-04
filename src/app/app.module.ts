@@ -30,6 +30,13 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 import { ContactComponent } from './contact/contact.component';
 import { ListingComponent } from './listing/listing.component';
 import { RoomDetailGuard } from './_helper/room-detail.guard';
+import { EditProfileComponent } from './client/edit-profile/edit-profile.component';
+import { PasswordChangeComponent } from './client/password-change/password-change.component';
+import { AlertModule } from '@coreui/angular';
+import { IconModule } from '@coreui/icons-angular';
+import { BlogsComponent } from './blogs/blogs.component';
+import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +54,11 @@ import { RoomDetailGuard } from './_helper/room-detail.guard';
     ResetpasswordComponent,
     ContactComponent,
     ListingComponent,
+    EditProfileComponent,
+    PasswordChangeComponent,
+    BlogsComponent,
+    BlogDetailComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +80,9 @@ import { RoomDetailGuard } from './_helper/room-detail.guard';
         useFactory: jwtOptionsFactor,
         deps:[StorageService]
       }
-    })
+    }),
+    AlertModule,
+    IconModule
 
   ],
   providers:
@@ -92,6 +106,8 @@ export class AppModule { }
 export function jwtOptionsFactor(storage:StorageService){
   return {
     tokenGetter:() => {
+      console.log("Đã add authen");
+
       return storage.getAccessToken();
     },
     allowedDomains:["http://webhotel1-dev.eba-9v28ppea.ap-south-1.elasticbeanstalk.com"],

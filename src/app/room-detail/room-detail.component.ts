@@ -11,28 +11,20 @@ import { ApiService } from '../_service/api.service';
 export class RoomDetailComponent implements OnInit {
 
   // @Input() room!: Room;
-  @Output() onRemoveEmployee = new EventEmitter<number>();
-  @Output() onEditEmployee = new EventEmitter<number>();
+ 
   imageUrl: string = '';
-  errorMessage = '';
-  room: Room | undefined;
-  constructor(private apiService: ApiService, private route: ActivatedRoute) {
-    
+  roomDetail = new Room;
+  constructor(private route: ActivatedRoute, private apiService: ApiService){}
 
-
-
-  }
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    if (id) {
-      this.getRoomDetail(id);
-    }
+
+    this.getRoute(this.route.snapshot.params['id']);
   }
-  getRoomDetail(id: number): void {
-    this.apiService.getRoomDetail(id).subscribe({
-      next: room => this.room == room,
-      error: err => this.errorMessage = err
+  getRoute(id : any) {
+    this.apiService.getRoomDetail(id).subscribe((res:any)=>{
+      this.roomDetail = res;
     });
   }
+
 }
-export {Room};
+
