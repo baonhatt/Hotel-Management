@@ -94,10 +94,10 @@ export function jwtOptionsFactor(storage:StorageService){
     tokenGetter:() => {
       return storage.getAccessToken();
     },
-    allowedDomains:["https://localhost:44380"],
+    allowedDomains:["http://webhotel1-dev.eba-9v28ppea.ap-south-1.elasticbeanstalk.com"],
     disallowedRoutes:[
-      "https://localhost:44380/api/Authorization/Login",
-      "https://localhost:44380/api/Token/Refresh"
+      "http://webhotel1-dev.eba-9v28ppea.ap-south-1.elasticbeanstalk.com/user/login",
+      "http://webhotel1-dev.eba-9v28ppea.ap-south-1.elasticbeanstalk.com/user/token/refresh"
     ],
     skipWhenExpired: false,
   }

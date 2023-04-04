@@ -25,7 +25,7 @@ export class AuthService {
       email: email,
       password: password,
     };
-    return this.http.post<any>(environment.BASE_URL_API + '/api/Authen/Login', body).pipe(
+    return this.http.post<any>(environment.BASE_URL_API + '/user/login', body).pipe(
       tap((response) => {
 
 
