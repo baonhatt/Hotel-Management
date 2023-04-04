@@ -39,20 +39,20 @@
                 <li class="list has-children active open show">
                   <a href="javascript:void(0)"> <i class="las la-user-circle"></i> Profile </a>
                   <ul class="submenu list-style-none">
-                    <li class="list selected"> <a href="dashboard_profile.html"> Profile </a> </li>
-                    <li class="list"> <a href="dashboard_edit_profile.html"> Edit Profile </a> </li>
-                    <li class="list"> <a href="dashboard_pass_change.html"> Password Change </a> </li>
+                    <li class="list selected"> <a [routerLink]="['/user-profile']"> Profile </a> </li>
+                    <li class="list"> <a [routerLink]="['/edit-user-profile']"> Edit Profile </a> </li>
+                    <li class="list"> <a [routerLink]="['/password-change']"> Password Change </a> </li>
                   </ul>
                 </li>
-               
+
                 <li class="list">
-                  <a href="javascript:void(0)"> <i class="las la-sign-out-alt"></i> Log Out </a>
+                  <a (click)="logout()"> <i class="las la-sign-out-alt"></i> Log Out </a>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="dashboard-right-contents mt-4 mt-lg-0">
+        <div class="dashboard-right-contents mt-4 mt-lg-0"  *ngIf="isLoggedIn();">
           <div class="dashboard-reservation">
             <div class="single-reservation bg-white base-padding">
               <div class="single-reservation-flex mb-4">
@@ -62,13 +62,13 @@
                       <img src="assets/img/dashboard/author.jpg" alt="img">
                     </div>
                     <div class="single-reservation-author-contents">
-                      <h5 class="single-reservation-author-contents-title"> Cameron Williamson </h5>
+                      <h5 class="single-reservation-author-contents-title">{{userProfile.email}}</h5>
                       <p class="single-reservation-author-contents-para"> Member since 2019 </p>
                     </div>
                   </div>
                 </div>
                 <div class="btn-wrapper">
-                  <a href="dashboard_edit_profile.html" class="cmn-btn btn-border"> Edit Profile </a>
+                  <a  [routerLink]="['/edit-user-profile']" class="cmn-btn btn-border"> Edit Profile </a>
                 </div>
               </div>
               <div class="single-reservation-item">
@@ -102,7 +102,7 @@
                   </div>
                 </div>
                 <div class="btn-wrapper">
-                  <a href="dashboard_pass_change.html" class="cmn-btn btn-border"> Change Password </a>
+                  <a [routerLink]="['/password-change']" class="cmn-btn btn-border"> Change Password </a>
                 </div>
               </div>
             </div>

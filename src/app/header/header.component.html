@@ -34,19 +34,15 @@
               <li><a href="dashboard_support.html"> Support </a></li>
               <li><a href="dashboard_tickets.html"> Tickets </a></li>
               <li><a href="dashboard_add_tickets.html"> Add Ticket </a></li>
-              <li><a href="dashboard_profile.html"> Dashboard Profile </a></li>
-              <li><a href="dashboard_edit_profile.html"> Edit Profile </a></li>
-              <li><a href="dashboard_pass_change.html"> Password Change </a></li>
+              <li><a [routerLink]="['/user-profile']"> Dashboard Profile </a></li>
+              <li><a [routerLink]="['/edit-user-profile']"> Edit Profile </a></li>
+              <li><a [routerLink]="['/password-change']"> Password Change </a></li>
               <li><a href="error.html"> Error Page </a></li>
             </ul>
           </li>
-          <li class="menu-item-has-children current-menu-item">
-            <a href="javascript:void(0)">Blog</a>
-            <ul class="sub-menu">
-              <li><a href="blog.html">Blog</a></li>
-              <li><a href="blog_details.html"> Blog Details </a></li>
-            </ul>
-          </li>
+          <li><a routerLink="/blogs" >Blog</a></li>
+
+
           <li><a routerLink="/contact"> Contact Us </a></li>
         </ul>
       </div>

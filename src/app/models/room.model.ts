@@ -1,10 +1,13 @@
-export interface Room {
-  id: number,
-  typeRoom: string,
-  image: string,
-  discription: string,
-  status: number,
-  rating: string,
-  price: number,
-  discount: number
+export class Room {
+  id!: number
+  typeRoom!: string
+  name!: string
+  roomPicture!: string
+  discription!: string
+  isActive!: boolean
+  rating!: string
+  currentPrice!: number
+  discountPrice!: number
+  guestNumber!: number
+  starAmount!: number
 }

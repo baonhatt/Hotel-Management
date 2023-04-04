@@ -1,13 +1,15 @@
-import { HttpClient, HttpEvent } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { BehaviorSubject, catchError, map, Observable, of, tap } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, of, switchMap, tap, throwError } from 'rxjs';
 import { TokenModel } from './token.model';
 import { User } from './user.model';
 import { StorageService } from './storage.service';
 import { NgToastService } from 'ng-angular-popup'
 import { environment } from '../../environments/environment.development';
+import { Room } from '../models/room.model';
 // import { TranslateService } from "@ngx-translate/core";
+export const JWT_NAME = 'blog-token';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +18,6 @@ export class AuthService {
 
 
   email: any;
-
   jwtService: JwtHelperService = new JwtHelperService();
   constructor(private http: HttpClient, private storage: StorageService, private jwtHelper: JwtHelperService, private toast: NgToastService) { }
   userProfile = new BehaviorSubject<User | null>(null);
@@ -25,7 +26,7 @@ export class AuthService {
       email: email,
       password: password,
     };
-    return this.http.post<any>(environment.BASE_URL_API + '/api/Authen/Login', body).pipe(
+    return this.http.post<any>(environment.BASE_URL_API + '/user/login', body).pipe(
       tap((response) => {
 
 
@@ -43,7 +44,6 @@ export class AuthService {
       }),
     );
   }
-
   refreshToken(login: TokenModel) {
     return this.http.post<TokenModel>(
       environment.BASE_URL_API + '/api/Token/Refresh',
@@ -51,6 +51,14 @@ export class AuthService {
     );
   }
 
+
+  getUserId(): Observable<number>{
+    return of(localStorage.getItem(JWT_NAME)).pipe(
+      switchMap((jwt: any) => of(this.jwtHelper.decodeToken(jwt)).pipe(
+        map((jwt: any) => jwt.user.id)
+      )
+    ));
+  }
   logout(): void {
     // Xóa thông tin người dùng khỏi localStorage hoặc sessionStorage khi đăng xuất
     localStorage.removeItem('token');
@@ -103,16 +111,18 @@ export class AuthService {
     });
   }
 
+
+
+
   requestChangePassword(email:string, clientURI:string) : Observable<any>{
-    return this.http.post(`${environment.BASE_URL_API}/api/Authen/RequestChangePassword`,{email, clientURI})
+    return this.http.post(`${environment.BASE_URL_API}/user/request-change-password`,{email, clientURI})
   }
 
-  // validateResetToken(token: string) {
-  //   return this.http.post(`${environment.BASE_URL_API}/validate-reset-token`, { token });
-  // }
 
-  changePassword(token: string, newPassword: string, confirmNewPassword: string, email:string): Observable<any> {
-    return this.http.post(`${environment.BASE_URL_API}/api/Authen/ConfirmChangePassword`, { token, newPassword, confirmNewPassword, email });
+
+  confirmChangePasswordViaEmail(token: string, newPassword: string, confirmNewPassword: string, email:string): Observable<any> {
+    return this.http.post(`${environment.BASE_URL_API}/user/confirm-change-password`, { token, newPassword, confirmNewPassword, email });
   }
+
 
 }

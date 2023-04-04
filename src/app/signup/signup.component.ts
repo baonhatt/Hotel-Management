@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, ValidationErrors } from '@angular/forms';
 import {  Router } from '@angular/router';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-signup',
@@ -35,7 +36,7 @@ export class SignupComponent implements OnInit{
 
   signupdata(signup: FormGroup){
 
-    this.http.post<any>("https://localhost:44380/api/Authorization/Registration", this.signup.value)
+    this.http.post<any>(`${environment.BASE_URL_API}/user/register`, this.signup.value)
     .subscribe(res =>{
       alert("Create an account successfully!");
 
@@ -47,12 +48,12 @@ export class SignupComponent implements OnInit{
   }
 
   onSubmit() {
-    this.submitted = true;
-    this.loading = true;
-    // stop here if form is invalid
-    if (this.signup.invalid) {
-        return ;
-    }
+    // this.submitted = true;
+    // this.loading = true;
+    // // stop here if form is invalid
+    // if (this.signup.invalid) {
+    //     return ;
+    // }
 
     this.signupdata(this.signup)
   }

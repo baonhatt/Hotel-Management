@@ -2,73 +2,121 @@
   "rooms": [
     {
       "id": 1,
-      "typeRoom":"King Room",
-      "image": "https://images.unsplash.com/photo-1618221118493-9cfa1a1c00da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80",
+      "name":"King Room",
+      "roomPicture": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
       "discription": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back.He lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him.So many legs pitifully thin compared with the size of the rest of him waved about helplessly as he looked What's happened to me.",
       "status": 1,
       "rating": 5,
-      "discount": 10,
-      "price": 20
+      "discountPrice": 10,
+      "currentPrice": 340000
     },
     {
       "id": 2,
-      "typeRoom":"King Suite1 Room",
-      "image": "https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "name":"King Suite1 Room",
+      "roomPicture": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
       "discription": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back.He lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him.So many legs pitifully thin compared with the size of the rest of him waved about helplessly as he looked What's happened to me.",
       "status": 1,
       "rating": 5,
-      "discount": 10,
-      "price": 20
+      "discountPrice": 10,
+      "currentPrice": 10000
     },
     {
       "id": 3,
-      "typeRoom":"King Suite2 Room",
-      "image": "https://images.unsplash.com/photo-1631049035182-249067d7618e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "name":"King Suite2 Room",
+      "roomPicture": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
       "discription": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back.He lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him.So many legs pitifully thin compared with the size of the rest of him waved about helplessly as he looked What's happened to me.",
       "status": 1,
-      "rating": 5,
-      "discount": 10,
-      "price": 20
+      "rating": 3.5,
+      "discountPrice": 10,
+      "currentPrice": 200000
     },
     {
       "id": 4,
-      "typeRoom":"King Suite Room",
-      "image": "https://images.unsplash.com/photo-1631049552057-403cdb8f0658?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "name":"King Suite Room",
+      "roomPicture": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
       "discription": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back.He lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him.So many legs pitifully thin compared with the size of the rest of him waved about helplessly as he looked What's happened to me.",
       "status": 1,
       "rating": 5,
-      "discount": 10,
-      "price": 20
+      "discountPrice": 10,
+      "currentPrice": 200000
     },
     {
       "id": 5,
-      "typeRoom":"King Suite Room",
-      "image": "https://images.unsplash.com/photo-1612320582827-a95ab2596dbc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80",
+      "name":"King Suite Room",
+      "roomPicture": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
       "discription": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back.He lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him.So many legs pitifully thin compared with the size of the rest of him waved about helplessly as he looked What's happened to me.",
       "status": 1,
-      "rating": 5,
-      "discount": 10,
-      "price": 20
+      "rating": 4.5,
+      "discountPrice": 10,
+      "currentPrice": 665000
     },
     {
       "id": 6,
-      "typeRoom":"King Suite Room",
-      "image": "https://images.unsplash.com/photo-1612152605347-f93296cb657d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      "name":"King Suite Room",
+      "roomPicture": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
       "discription": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back.He lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him.So many legs pitifully thin compared with the size of the rest of him waved about helplessly as he looked What's happened to me.",
       "status": 1,
-      "rating": 5,
-      "discount": 10,
-      "price": 20
+      "rating": 3,
+      "discountPrice": 10,
+      "currentPrice": 900000
+    },
+    {
+      "id": 6,
+      "name":"King Suite Room",
+      "roomPicture": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+      "discription": "One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back.He lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him.So many legs pitifully thin compared with the size of the rest of him waved about helplessly as he looked What's happened to me.",
+      "status": 1,
+      "rating": 3.4,
+      "discountPrice": 10,
+      "currentPrice": 900000
     }
   ],
-  "comments": [
+  "blog": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "imgTitle": "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+      "discription": "Independent Festival",
+      "postDate": "2023-04-12"
+    },
+    {
+      "id": 2,
+      "imgTitle": "https://images.unsplash.com/photo-1591088398332-8a7791972843?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+      "discription": "Independent Festival",
+      "postDate": "2023-04-12"    },
+    {
+      "id": 3,
+      "imgTitle": "https://images.unsplash.com/photo-1617104678098-de229db51175?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2114&q=80",
+      "discription": "Independent Festival",
+      "postDate": "2023-04-12"
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "user": [
+    {
+      "id": 1,
+      "email": "wren1@gmail.com",
+      "userName": "baonhatt",
+      "Image": "https://images.unsplash.com/flagged/photo-1573740144655-bbb6e88fb18a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+      "Address": "Thanh Khe, Da Nang",
+      "PhoneNumber": "083598746346",
+      "CMND": "038403495873"
+    },
+    {
+      "id": 2,
+      "email": "wren2@gmail.com",
+      "userName": "baonhatt",
+      "Image": "https://images.unsplash.com/flagged/photo-1573740144655-bbb6e88fb18a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+      "Address": "Thanh Khe, Da Nang",
+      "PhoneNumber": "083598746346",
+      "CMND": "038403495873"
+    },
+    {
+      "id": 3,
+      "email": "wren2@gmail.com",
+      "userName": "baonhatt",
+      "Image": "https://images.unsplash.com/flagged/photo-1573740144655-bbb6e88fb18a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+      "Address": "Thanh Khe, Da Nang",
+      "PhoneNumber": "083598746346",
+      "CMND": "038403495873"
+    }
+  ]
 }

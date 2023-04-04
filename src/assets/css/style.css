@@ -361,8 +361,11 @@ span {
   margin: 0;
 }
 
-.lazyloads {
+a.lazyloads  {
   display: block;
+  height: 200px;
+  width: 300px;
+  object-fit: contain;
 }
 
 .center-text {
@@ -9968,6 +9971,7 @@ div[class*=col]:nth-child(4n+4) .single-why-two:hover .single-why-two-contents-p
 .single-blog-thumbs img {
   -webkit-transition: 300ms;
   transition: 300ms;
+  height: 300px;
 }
 .single-blog-thumbs-date {
   position: absolute;

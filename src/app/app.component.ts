@@ -14,4 +14,5 @@ export class AppComponent  implements OnInit{
   logEmail(email: string) {
     console.log(email);
   }
+
 }
