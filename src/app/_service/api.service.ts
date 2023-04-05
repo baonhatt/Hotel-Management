@@ -28,7 +28,7 @@ export class ApiService {
   }
 
 
-  getRoomDetail(id: number): Observable<Room>{
+  getRoomDetail(id: any): Observable<Room>{
     const url = `${this.apiRoom}/${id}`;
     return this.http.get<Room>(url);
   }

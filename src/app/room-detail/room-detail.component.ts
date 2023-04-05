@@ -22,7 +22,9 @@ export class RoomDetailComponent implements OnInit {
     this.getRoomDetail();
   }
   getRoomDetail(): void{
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id = this.route.snapshot.paramMap.get('id');
+    console.log(id);
+
     this.apiService.getRoomDetail(id)
       .subscribe((res)=>{
         this.roomdetail = res
