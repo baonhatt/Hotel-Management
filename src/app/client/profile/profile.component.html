@@ -62,8 +62,8 @@
                       <img src="assets/img/dashboard/author.jpg" alt="img">
                     </div>
                     <div class="single-reservation-author-contents">
-                      <h5 class="single-reservation-author-contents-title">{{userProfile.email}}</h5>
-                      <p class="single-reservation-author-contents-para"> Member since 2019 </p>
+                      <h5 class="single-reservation-author-contents-title">{{userProfile.userName}}</h5>
+                      <p class="single-reservation-author-contents-para"> Member since <span>{{userProfile.createdAt  | date }}</span> </p>
                     </div>
                   </div>
                 </div>
@@ -75,18 +75,18 @@
                 <div class="single-reservation-contact">
                   <div class="single-reservation-contact-item">
                     <span class="single-reservation-contact-list"> <span> <i class="las la-map-marker-alt"></i> </span>
-                      8502 Preston Rd. Inglewood, Maine 98380 </span>
+                    {{userProfile.address}} </span>
                   </div>
                   <div class="single-reservation-contact-item">
                     <a href="https://bytesed.com/cdn-cgi/l/email-protection#aec0cbc2ddc180c0c1dcc3cfc0eecbd6cfc3dec2cb80cdc1c3"
                       class="single-reservation-contact-list"> <span> <i class="las la-envelope"></i> </span> <span
                         class="__cf_email__"
-                        data-cfemail="6b050e07180445050419060a052b0e130a061b070e45080406">[email&#160;protected]</span>
+                        data-cfemail="6b050e07180445050419060a052b0e130a061b070e45080406">{{userProfile.email}}</span>
                     </a>
                   </div>
                   <div class="single-reservation-contact-item">
                     <a href="tel:(208)5550112" class="single-reservation-contact-list"> <span> <i
-                          class="las la-phone-alt"></i> </span> (208) 555-0112 </a>
+                          class="las la-phone-alt"></i> </span> {{userProfile.phoneNumber}} </a>
                   </div>
                 </div>
               </div>

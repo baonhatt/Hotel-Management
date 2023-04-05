@@ -5,11 +5,11 @@
     <div class="row g-4">
       <div class="col-xl-8 col-lg-7" >
         <div class="details-left-wrapper">
-          <div class="details-contents bg-white radius-10">
-            <div class="details-contents-header">
+          <div class="details-contents bg-white radius-10"  >
+            <div class="details-contents-header" >
               <div class="details-contents-thumb details-contents-main-thumb bg-image"
                 >
-                <img src="{{roomDetail.roomPicture}}" alt="Room Image">
+                <img src="{{roomdetail?.roomPicture}}" alt="Room Image">
               </div>
               <div class="details-contents-header-flex">
                 <div class="details-contents-header-thumb">
@@ -23,9 +23,9 @@
             </div>
             <div class="hotel-view-contents">
               <div class="hotel-view-contents-header">
-                <span class="hotel-view-contents-review"> <i class="las la-star"></i> {{roomDetail.rating}} <span
+                <span class="hotel-view-contents-review"> <i class="las la-star"></i> {{roomdetail?.rating}} <span
                     class="hotel-view-contents-review-count"> (380) </span> </span>
-                <h3 class="hotel-view-contents-title"> {{roomDetail.name}} </h3>
+                <h3 class="hotel-view-contents-title"> {{roomdetail?.name}} </h3>
                 <div class="hotel-view-contents-location mt-2">
                 </div>
               </div>
@@ -64,7 +64,7 @@
               <div class="hotel-view-contents-bottom">
                 <div class="hotel-view-contents-bottom-flex">
                   <div class="hotel-view-contents-bottom-contents">
-                    <h4 class="hotel-view-contents-bottom-title"> {{roomDetail.currentPrice}} <sub>/Night</sub> </h4>
+                    <h4 class="hotel-view-contents-bottom-title"> {{roomdetail?.currentPrice}} <sub>/Night</sub> </h4>
                     <p class="hotel-view-contents-bottom-para"> (4 Nights, 2 Rooms, 4 Persons) </p>
                   </div>
                   <div class="btn-wrapper">

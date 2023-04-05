@@ -16,7 +16,7 @@ export class ApiService {
   room: any;
   blog: any;
   baseUrl = 'http://webhotel1-dev.eba-9v28ppea.ap-south-1.elasticbeanstalk.com/api/Room/getAll';
-  apiRoom = 'http://localhost:3000/rooms';
+  apiRoom = 'http://webhotel1-dev.eba-9v28ppea.ap-south-1.elasticbeanstalk.com/user/room/get-all';
   apiBlog = 'http://localhost:3000/blog';
   getRooms() {
     return this.http.get<Room[]>(this.apiRoom);
@@ -26,10 +26,11 @@ export class ApiService {
   getBlogs(){
     return this.http.get<Blog[]>(this.apiBlog);
   }
- 
+
 
   getRoomDetail(id: number): Observable<Room>{
-    return this.http.get<Room>(`${this.apiRoom}/${id}`).pipe()
+    const url = `${this.apiRoom}/${id}`;
+    return this.http.get<Room>(url);
   }
 
   getBlogDetail(id: number): Observable<Blog>{

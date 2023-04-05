@@ -5,5 +5,6 @@ export class userProfile {
   image!: Date
   address!: string
   cmnd!: string
+  createdAt!: Date
 
 }
