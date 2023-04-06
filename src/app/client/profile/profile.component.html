@@ -1,8 +1,5 @@
 <app-header></app-header>
-
 <body>
-
-
   <div class="breadcrumb-area breadcrumb-padding">
     <div class="container custom-container-one">
       <div class="row">
@@ -19,8 +16,6 @@
       </div>
     </div>
   </div>
-
-
   <div class="body-overlay"></div>
   <div class="dashboard-area section-bg-2 dashboard-padding">
     <div class="container">
@@ -39,9 +34,9 @@
                 <li class="list has-children active open show">
                   <a href="javascript:void(0)"> <i class="las la-user-circle"></i> Profile </a>
                   <ul class="submenu list-style-none">
-                    <li class="list selected"> <a [routerLink]="['/user-profile']"> Profile </a> </li>
-                    <li class="list"> <a [routerLink]="['/edit-user-profile']"> Edit Profile </a> </li>
-                    <li class="list"> <a [routerLink]="['/password-change']"> Password Change </a> </li>
+                    <li class="list" [ngClass]="{'selected' : checkContent == 0}"> <a (click)="checkContent = 0" [routerLink]="['/user-profile']"> Profile </a> </li>
+                    <li class="list" [ngClass]="{'selected' : checkContent == 1}"> <a (click)="checkContent = 1" [routerLink]="['/user-profile']"> Edit Profile </a> </li>
+                    <li class="list" [ngClass]="{'selected' : checkContent == 2}"> <a (click)="checkContent = 2" [routerLink]="['/user-profile']"> Password Change </a> </li>
                   </ul>
                 </li>
 
@@ -52,8 +47,10 @@
             </div>
           </div>
         </div>
-        <div class="dashboard-right-contents mt-4 mt-lg-0"  *ngIf="isLoggedIn();">
-          <div class="dashboard-reservation">
+        <div class="dashboard-right-contents mt-4 mt-lg-0">
+          <app-edit-profile *ngIf="checkContent == 1"></app-edit-profile>
+          <app-password-change *ngIf="checkContent == 2"></app-password-change>
+          <div class="dashboard-reservation"  *ngIf="checkContent == 0">
             <div class="single-reservation bg-white base-padding">
               <div class="single-reservation-flex mb-4">
                 <div class="single-reservation-author">
@@ -85,7 +82,7 @@
                     </a>
                   </div>
                   <div class="single-reservation-contact-item">
-                    <a href="tel:(208)5550112" class="single-reservation-contact-list"> <span> <i
+                    <a href="tel:{{userProfile.phoneNumber}}" class="single-reservation-contact-list"> <span> <i
                           class="las la-phone-alt"></i> </span> {{userProfile.phoneNumber}} </a>
                   </div>
                 </div>
@@ -108,6 +105,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>

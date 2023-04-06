@@ -1,166 +1,55 @@
-<app-header></app-header>
-
-
-
-
-<div class="breadcrumb-area breadcrumb-padding">
-  <div class="container custom-container-one">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="breadcrumb-contents">
-          <h4 class="breadcrumb-contents-title"> Edit Profile </h4>
-          <ul class="breadcrumb-contents-list list-style-none">
-            <li class="breadcrumb-contents-list-item"> <a href="index.html" class="breadcrumb-contents-list-item-link">
-                Home </a> </li>
-            <li class="breadcrumb-contents-list-item"> <a href="profile.html"
-                class="breadcrumb-contents-list-item-link"> Profile </a> </li>
-            <li class="breadcrumb-contents-list-item"> Edit Profile </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="body-overlay"></div>
-<div class="dashboard-area section-bg-2 dashboard-padding">
-  <div class="container">
-    <div class="dashboard-contents-wrapper">
-      <div class="dashboard-icon">
-        <div class="sidebar-icon">
-          <i class="las la-bars"></i>
-        </div>
-      </div>
-      <div class="dashboard-left-content">
-        <div class="dashboard-close-main">
-          <div class="close-bars"> <i class="las la-times"></i> </div>
-          <div class="dashboard-bottom">
-            <ul class="dashboard-list list-style-none">
-              <li class="list">
-                <a href="dashboard.html"> <i class="las la-briefcase"></i> Dashboard </a>
-              </li>
-              <li class="list">
-                <a href="dashboard_cancellation.html"> <i class="las la-times-circle"></i>
-                  Cancellation & Refund </a>
-              </li>
-              <li class="list">
-                <a href="dashboard_report_issue.html"> <i class="las la-exclamation-triangle"></i>
-                  Report an issue <span class="badge-notification"> 12 </span> </a>
-              </li>
-              <li class="list has-children active open show">
-                <a href="javascript:void(0)"> <i class="las la-user-circle"></i> Profile </a>
-                <ul class="submenu list-style-none">
-                  <li class="list"> <a [routerLink]="['/user-profile']"> Profile </a> </li>
-                  <li class="list selected"> <a routerLink="edit-user-profile"> Edit Profile
-                    </a> </li>
-                  <li class="list"> <a [routerLink]="['/password-change']"> Password Change </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="list has-children">
-                <a href="javascript:void(0)"> <i class="las la-headset"></i> Support </a>
-                <ul class="submenu list-style-none">
-                  <li class="list"> <a href="dashboard_support.html"> Support </a> </li>
-                  <li class="list"> <a href="dashboard_tickets.html"> Tickets </a> </li>
-                  <li class="list"> <a href="dashboard_add_tickets.html"> Add Tickets </a> </li>
-                </ul>
-              </li>
-              <li class="list">
-                <a href="javascript:void(0)"> <i class="las la-sign-out-alt"></i> Log Out </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="dashboard-right-contents mt-4 mt-lg-0">
-        <div class="dashboard-reservation">
-          <div class="single-reservation bg-white base-padding">
-            <h3 class="single-reservation-title"> Edit Profile </h3>
-            <div class="custom--form dashboard-form">
-              <form action="" [formGroup]="updateProfile" (ngSubmit)="OnSubmit()" >
-                <div class="dashboard-flex-input">
-                  <div class="dashboard-input mt-4">
-                    <label class="label-title"> Image </label>
-                    <input type="file" class="form--control" formControlName="image" placeholder="Full Name">
-                  </div>
-
+<div class="dashboard-reservation">
+  <div class="single-reservation bg-white base-padding">
+    <h3 class="single-reservation-title"> Edit Profile </h3>
+    <div class="custom--form dashboard-form">
+      <form action="" [formGroup]="updateProfile" (ngSubmit)="OnSubmit()">
+        <div class="dashboard-flex-input">
+          <div class="dashboard-input mt-4">
+            <!--Avatar-->
+            <div>
+              <div class="d-flex justify-content-center mb-4">
+                <img [src]="userProfile.image" class="rounded-circle" alt="example placeholder"
+                  style="width: 200px;height: 200px; object-fit:cover" />
+              </div>
+              <div class="d-flex justify-content-center">
+                <div class="btn btn-primary btn-rounded">
+                  <label class="form-label text-white m-1" for="customFile2">Choose file</label>
+                  <input type="file" class="form-control d-none" formControlName="image" id="customFile2" />
                 </div>
-                <div class="dashboard-flex-input">
-                  <div class="dashboard-input mt-4">
-                    <label class="label-title"> Address </label>
-                    <input type="text" class="form--control" formControlName="address" placeholder="Address">
-                  </div>
-                </div>
-                <div class="dashboard-flex-input">
-                  <div class="dashboard-input mt-4">
-                    <label class="label-title"> Email </label>
-                    <input type="text" class="form--control" formControlName="email" placeholder="email">
-                  </div>
-                </div>
-                <div class="dashboard-flex-input">
-                  <div class="dashboard-input mt-4">
-                    <label class="label-title"> ID Card </label>
-                    <input type="text" class="form--control" formControlName="cmnd" placeholder="ID Card">
-                  </div>
-                </div>
-
-
-                <div class="dashboard-flex-input">
-                  <div class="dashboard-input mt-4">
-                    <label class="label-title"> Phone Number </label>
-                    <input type="text" class="form--control" formControlName="phoneNumber" id="phone" placeholder="Phone Number">
-                  </div>
-                </div>
-                <div class="btn-wrapper mt-4">
-                  <button href="javscript:void(0)" type="submit" class="cmn-btn btn-bg-1"> Save Changes </button>
-                </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+        <div class="dashboard-flex-input">
+          <div class="dashboard-input mt-4">
+            <label class="label-title"> Address </label>
+            <input type="text" class="form--control" formControlName="address" placeholder="Address"
+              [value]="userProfile.address">
+          </div>
+        </div>
+        <div class="dashboard-flex-input">
+          <div class="dashboard-input mt-4">
+            <label class="label-title"> Email </label>
+            <input type="text" class="form--control" placeholder="email" [value]="userProfile.email">
+          </div>
+        </div>
+        <div class="dashboard-flex-input">
+          <div class="dashboard-input mt-4">
+            <label class="label-title"> CMND </label>
+            <input type="text" class="form--control" formControlName="cmnd" placeholder="ID Card" [value]="userProfile.cmnd ">{{userProfile.cmnd}}
+          </div>
+        </div>
+        <div class="dashboard-flex-input">
+          <div class="dashboard-input mt-4">
+            <label class="label-title"> Phone Number </label>
+            <input type="text" class="form--control" formControlName="phoneNumber" id="phone" placeholder="Phone Number"
+              [value]="userProfile.phoneNumber">
+          </div>
+        </div>
+        <div class="btn-wrapper mt-4">
+          <button href="javscript:void(0)" type="submit" class="cmn-btn btn-bg-1"> Save Changes </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
-
-
-<div class="popup-overlay"></div>
-<div class="popup-fixed">
-  <div class="popup-contents popup-cancell-modal">
-    <h2 class="popup-contents-title"> Why do you want to cancel? </h2>
-    <div class="popup-contents-select">
-      <label class="popup-contents-select-label"> Choose a reason </label>
-      <div class="js-select">
-        <select>
-          <option value="1">Don't want to Book</option>
-          <option value="2">Booked Accidentally</option>
-          <option value="3">Don't want to Book</option>
-        </select>
-      </div>
-    </div>
-    <div class="popup-contents-btn flex-btn">
-      <a href="javascript:void(0)" class="dash-btn popup-close"> <i class="las la-arrow-left"></i> Go Back
-      </a>
-      <a href="javascript:void(0)" class="dash-btn btn-cancelled popup-close"> Cancel </a>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-<div class="back-to-top">
-  <span class="back-top"> <i class="las la-angle-up"></i> </span>
-</div>
-
-
-<div class="mouse-move mouse-outer"></div>
-<div class="mouse-move mouse-inner"></div>
-
-
-
-
-
-<app-footer></app-footer>

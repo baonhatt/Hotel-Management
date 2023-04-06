@@ -1,8 +1,8 @@
 export class userProfile {
-  phoneNumber!: string
   userName!: string
+  phoneNumber!: string
   email!: string
-  image!: Date
+  image!: string
   address!: string
   cmnd!: string
   createdAt!: Date

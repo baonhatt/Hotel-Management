@@ -89,10 +89,7 @@ export class LoginComponent implements OnInit {
 
 
   getUserData(){
-
       window.self.close();
-
-
   }
   onSubmit() {
     this.submitted = true;

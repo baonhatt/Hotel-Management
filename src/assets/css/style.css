@@ -9648,7 +9648,7 @@ div[class*=col]:nth-child(4n+4) .single-why-two:hover .single-why-two-contents-p
 }
 
 .login-wrapper-flex {
-  margin-top: 90px;
+  margin-top: 60px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -13742,7 +13742,7 @@ blockquote .blockquote-contents-title {
 .dashboard-form .form-group .form--control#phone,
 .dashboard-form .form-group .form-control#phone {
   width: 100%;
-  padding-left: 50px;
+  /* padding-left: 50px; */
 }
 .dashboard-form .dashboard-input .form--control::-webkit-outer-spin-button, .dashboard-form .dashboard-input .form--control::-webkit-inner-spin-button,
 .dashboard-form .dashboard-input .form-control::-webkit-outer-spin-button,

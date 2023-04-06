@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { environment } from 'src/environments/environment.development';
 import { FormControl } from '@angular/forms';
+import { userProfile } from 'src/app/models/userProfile.model';
+import { ProfileComponent } from '../profile/profile.component';
+import { UserService } from 'src/app/_service/user.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -16,28 +19,36 @@ export class EditProfileComponent implements OnInit {
   updateProfile!: FormGroup;
   loading = false;
   submitted = false;
+  userProfile = new userProfile;
   constructor(
     private http: HttpClient,
     private fb: FormBuilder,
     private route: Router,
-    private toast: NgToastService
+    private toast: NgToastService,
+    private userInfo: ProfileComponent,
+    private userService: UserService,
   ){}
   get f() {
     return this.updateProfile.controls
   }
   ngOnInit(): void {
     this.updateProfile = this.fb.group({
-      email: [''],
       phoneNumber:['', Validators.required, Validators.pattern("[0-9 ]{12}")],
       cmnd: ['',Validators.required, Validators.pattern("[0-9]{10}")],
       image: [null],
       address: ['', Validators.required, Validators.maxLength(100)]
-    })
+    });
+    this.getUserProfile();
 
+  }
+  getUserProfile() : void{
+    this.userService.getUserProfile().subscribe((res) => {
+      this.userProfile = res;
+    })
   }
 
   updateUserProfile(updateProfile: FormGroup){
-    this.http.post<any>(`https://localhost:7062/api/User/UpdateProfile`, updateProfile.value )
+    this.http.post<any>(environment.BASE_URL_API + `/user/user-profile/update`, updateProfile.value )
     .subscribe((res) =>{
       console.log(res);
       this.toast.success({

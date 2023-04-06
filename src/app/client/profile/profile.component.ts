@@ -6,7 +6,7 @@ import { Observable, map, switchMap } from 'rxjs';
 import { ApiService } from 'src/app/_service/api.service';
 import { AuthService } from 'src/app/_service/auth.service';
 import { UserService } from 'src/app/_service/user.service';
-import { userProfile } from 'src/app/models/user.model';
+import { userProfile } from 'src/app/models/userProfile.model';
 
 @Component({
   selector: 'app-profile',
@@ -14,25 +14,23 @@ import { userProfile } from 'src/app/models/user.model';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent {
-  userProfile = new userProfile
-
+  userProfile = new userProfile;
+  checkContent : any;
 
   constructor(private http: HttpClient, private auth: AuthService,
     private route:ActivatedRoute,
     private apiServe: ApiService,
     private userService: UserService){}
-
-
   ngOnInit() {
-    this.getUserProfile()
+    this.getUserProfile();
+    this.checkContent = 0;
   }
 
-  getUserProfile(){
-    this.userService.getUserProfile().subscribe((res:userProfile) => {
+  getUserProfile() : any{
+    this.userService.getUserProfile().subscribe((res) => {
       this.userProfile = res;
     })
   }
-
 
   isLoggedIn() {
     return this.auth.isLoggedIn();
