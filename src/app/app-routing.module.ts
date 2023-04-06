@@ -76,10 +76,10 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'edit-user-profile',
+    path: 'edit-profile',
     component: EditProfileComponent,
     data: {
-      requiredAuth: false
+      requiredAuth: true
     },
     canActivate: [AuthGuard]
   },

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -20,12 +20,15 @@ export class EditProfileComponent implements OnInit {
   loading = false;
   submitted = false;
   userProfile = new userProfile;
+  files : any;
+  imagePath : any;
+  imgURL: any;
+  message: any;
   constructor(
     private http: HttpClient,
     private fb: FormBuilder,
     private route: Router,
     private toast: NgToastService,
-    private userInfo: ProfileComponent,
     private userService: UserService,
   ){}
   get f() {
@@ -33,13 +36,30 @@ export class EditProfileComponent implements OnInit {
   }
   ngOnInit(): void {
     this.updateProfile = this.fb.group({
-      phoneNumber:['', Validators.required, Validators.pattern("[0-9 ]{12}")],
-      cmnd: ['',Validators.required, Validators.pattern("[0-9]{10}")],
-      image: [null],
-      address: ['', Validators.required, Validators.maxLength(100)]
+      PhoneNumber:['', Validators.required],
+      CMND: ['',Validators.required],
+      Address: ['']
     });
     this.getUserProfile();
 
+  }
+  uploadFile = (files : any) => {
+    this.files = files;
+    if (files.length === 0)
+      return;
+
+    var mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = "Only images are supported.";
+      return;
+    }
+
+    var reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      this.imgURL = reader.result;
+    }
   }
   getUserProfile() : void{
     this.userService.getUserProfile().subscribe((res) => {
@@ -48,30 +68,34 @@ export class EditProfileComponent implements OnInit {
   }
 
   updateUserProfile(updateProfile: FormGroup){
-    this.http.post<any>(environment.BASE_URL_API + `/user/user-profile/update`, updateProfile.value )
+    let fileToUpload = <File>this.files[0];
+    const formData = new FormData();
+    formData.append('Image', fileToUpload, fileToUpload.name);
+    formData.append('Address', this.updateProfile.controls['Address'].value);
+    formData.append('PhoneNumber', this.updateProfile.controls['PhoneNumber'].value);
+    formData.append('CMND', this.updateProfile.controls['CMND'].value);
+    this.http.post<any>(environment.BASE_URL_API + `/user/user-profile/update`, formData )
     .subscribe((res) =>{
-      console.log(res);
       this.toast.success({
-        detail: "Update Successfuly!"
+        detail: res
       });
     }, err => {
       this.toast.error({
-        detail: "Something was wrong!"
+        detail: err
       });
     });
   }
 
   OnSubmit(){
     this.loading = true;
+    console.log(this.updateProfile);
+    console.log("Đã submit");
+
     this.updateUserProfile(this.updateProfile);
   }
-  // OnSubmit(){
-  //   // this.submitted = true;
-  //   // if (this.updateProfile.invalid) {
-  //   //   return;
-  //   // }
 
-  //   this.loading = true;
-  //   this.updateUserProfile(this.updateProfile)
-  // }
+  logout(): void {
+    // Xóa thông tin người dùng khỏi localStorage hoặc sessionStorage khi đăng xuất
+    localStorage.removeItem('token');
+  }
 }

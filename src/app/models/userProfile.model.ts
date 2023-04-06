@@ -1,8 +1,10 @@
+import { Binary } from "@angular/compiler"
+
 export class userProfile {
   userName!: string
   phoneNumber!: string
   email!: string
-  image!: string
+  image!: any
   address!: string
   cmnd!: string
   createdAt!: Date

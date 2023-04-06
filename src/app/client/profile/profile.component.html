@@ -1,4 +1,5 @@
 <app-header></app-header>
+
 <body>
   <div class="breadcrumb-area breadcrumb-padding">
     <div class="container custom-container-one">
@@ -7,8 +8,8 @@
           <div class="breadcrumb-contents">
             <h4 class="breadcrumb-contents-title"> Profile Details </h4>
             <ul class="breadcrumb-contents-list list-style-none">
-              <li class="breadcrumb-contents-list-item"> <a href="index.html"
-                  class="breadcrumb-contents-list-item-link"> Home </a> </li>
+              <li class="breadcrumb-contents-list-item"> <a href="index.html" class="breadcrumb-contents-list-item-link"> Home
+                </a> </li>
               <li class="breadcrumb-contents-list-item"> Profile </li>
             </ul>
           </div>
@@ -34,9 +35,9 @@
                 <li class="list has-children active open show">
                   <a href="javascript:void(0)"> <i class="las la-user-circle"></i> Profile </a>
                   <ul class="submenu list-style-none">
-                    <li class="list" [ngClass]="{'selected' : checkContent == 0}"> <a (click)="checkContent = 0" [routerLink]="['/user-profile']"> Profile </a> </li>
-                    <li class="list" [ngClass]="{'selected' : checkContent == 1}"> <a (click)="checkContent = 1" [routerLink]="['/user-profile']"> Edit Profile </a> </li>
-                    <li class="list" [ngClass]="{'selected' : checkContent == 2}"> <a (click)="checkContent = 2" [routerLink]="['/user-profile']"> Password Change </a> </li>
+                    <li class="list selected"> <a [routerLink]="['/user-profile']"> Profile </a> </li>
+                    <li class="list"> <a [routerLink]="['/edit-profile']"> Edit Profile </a> </li>
+                    <li class="list"> <a [routerLink]="['/user-profile']"> Password Change </a> </li>
                   </ul>
                 </li>
 
@@ -48,9 +49,7 @@
           </div>
         </div>
         <div class="dashboard-right-contents mt-4 mt-lg-0">
-          <app-edit-profile *ngIf="checkContent == 1"></app-edit-profile>
-          <app-password-change *ngIf="checkContent == 2"></app-password-change>
-          <div class="dashboard-reservation"  *ngIf="checkContent == 0">
+          <div class="dashboard-reservation">
             <div class="single-reservation bg-white base-padding">
               <div class="single-reservation-flex mb-4">
                 <div class="single-reservation-author">
@@ -60,19 +59,20 @@
                     </div>
                     <div class="single-reservation-author-contents">
                       <h5 class="single-reservation-author-contents-title">{{userProfile.userName}}</h5>
-                      <p class="single-reservation-author-contents-para"> Member since <span>{{userProfile.createdAt  | date }}</span> </p>
+                      <p class="single-reservation-author-contents-para"> Member since <span>{{userProfile.createdAt | date
+                          }}</span> </p>
                     </div>
                   </div>
                 </div>
                 <div class="btn-wrapper">
-                  <a  [routerLink]="['/edit-user-profile']" class="cmn-btn btn-border"> Edit Profile </a>
+                  <a [routerLink]="['/edit-user-profile']" class="cmn-btn btn-border"> Edit Profile </a>
                 </div>
               </div>
               <div class="single-reservation-item">
                 <div class="single-reservation-contact">
                   <div class="single-reservation-contact-item">
                     <span class="single-reservation-contact-list"> <span> <i class="las la-map-marker-alt"></i> </span>
-                    {{userProfile.address}} </span>
+                      {{userProfile.address}} </span>
                   </div>
                   <div class="single-reservation-contact-item">
                     <a href="https://bytesed.com/cdn-cgi/l/email-protection#aec0cbc2ddc180c0c1dcc3cfc0eecbd6cfc3dec2cb80cdc1c3"
