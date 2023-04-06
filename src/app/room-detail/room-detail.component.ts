@@ -11,24 +11,17 @@ import { ApiService } from '../_service/api.service';
 export class RoomDetailComponent implements OnInit {
 
   // @Input() room!: Room;
-  roomId!: any;
-
-  imageUrl: string = '';
-  roomdetail:undefined | Room;
+  room!: Room
   constructor(private route: ActivatedRoute, private apiService: ApiService){}
 
   ngOnInit() {
 
-    this.getRoomDetail();
+    this.getRoomById();
   }
-  getRoomDetail(): void{
-    const id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
-
+  getRoomById(): void {
+    const id = +this.route.snapshot.paramMap.get('id')!;
     this.apiService.getRoomDetail(id)
-      .subscribe((res)=>{
-        this.roomdetail = res
-      })
+      .subscribe(room => this.room = room);
   }
 
 

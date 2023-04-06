@@ -26,7 +26,7 @@ export class SignupComponent implements OnInit{
     this.injectScript("assets/js/signup/signup.js");
     this.signup = this.fb.group({
       name: ['',Validators.required, Validators.name],
-      email: ['', [Validators.required ,Validators.email]],
+      Email: ['', [Validators.required ,Validators.email]],
       userName: ['',Validators.required, Validators.name],
       phoneNumber:['', Validators.required, Validators.pattern("[0-9 ]{12}")],
       password: ['',[Validators.required,Validators.pattern('^((?!.*[s])(?=.*[A-Z])(?=.*d).{8,99})')]],
