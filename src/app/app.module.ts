@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthTokenInterceptor } from './_helper/http.interceptor';
 import { HeaderComponent } from './header/header.component';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
-// import { CanActivate } from '@angular/router';
+import { CanActivate } from '@angular/router';
 import { AuthGuard } from './_helper/http.guard';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { RoomDetailComponent } from './room-detail/room-detail.component';
@@ -30,6 +30,13 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
 import { ContactComponent } from './contact/contact.component';
 import { ListingComponent } from './listing/listing.component';
 import { RoomDetailGuard } from './_helper/room-detail.guard';
+import { EditProfileComponent } from './client/edit-profile/edit-profile.component';
+import { PasswordChangeComponent } from './client/password-change/password-change.component';
+import { AlertModule } from '@coreui/angular';
+import { IconModule } from '@coreui/icons-angular';
+import { BlogsComponent } from './blogs/blogs.component';
+import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +54,11 @@ import { RoomDetailGuard } from './_helper/room-detail.guard';
     ResetpasswordComponent,
     ContactComponent,
     ListingComponent,
+    EditProfileComponent,
+    PasswordChangeComponent,
+    BlogsComponent,
+    BlogDetailComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +80,9 @@ import { RoomDetailGuard } from './_helper/room-detail.guard';
         useFactory: jwtOptionsFactor,
         deps:[StorageService]
       }
-    })
+    }),
+    AlertModule,
+    IconModule
 
   ],
   providers:
@@ -92,12 +106,14 @@ export class AppModule { }
 export function jwtOptionsFactor(storage:StorageService){
   return {
     tokenGetter:() => {
+      console.log("Đã add authen");
+
       return storage.getAccessToken();
     },
-    allowedDomains:["https://localhost:44380"],
+    allowedDomains:["http://webhotel1-dev.eba-9v28ppea.ap-south-1.elasticbeanstalk.com"],
     disallowedRoutes:[
-      "https://localhost:44380/api/Authorization/Login",
-      "https://localhost:44380/api/Token/Refresh"
+      "http://webhotel1-dev.eba-9v28ppea.ap-south-1.elasticbeanstalk.com/user/login",
+      "http://webhotel1-dev.eba-9v28ppea.ap-south-1.elasticbeanstalk.com/user/token/refresh"
     ],
     skipWhenExpired: false,
   }

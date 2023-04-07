@@ -35,8 +35,8 @@
                 <li class="list has-children active open show">
                   <a href="javascript:void(0)"> <i class="las la-user-circle"></i> Profile </a>
                   <ul class="submenu list-style-none">
-                    <li class="list selected"> <a [routerLink]="['/user-profile']"> Profile </a> </li>
-                    <li class="list"> <a [routerLink]="['/edit-profile']"> Edit Profile </a> </li>
+                    <li class="list"> <a [routerLink]="['/user-profile']"> Profile </a> </li>
+                    <li class="list selected"> <a [routerLink]="['/edit-profile']"> Edit Profile </a> </li>
                     <li class="list"> <a [routerLink]="['/user-profile']"> Password Change </a> </li>
                   </ul>
                 </li>
@@ -51,61 +51,66 @@
         <div class="dashboard-right-contents mt-4 mt-lg-0">
           <div class="dashboard-reservation">
             <div class="single-reservation bg-white base-padding">
-              <div class="single-reservation-flex mb-4">
-                <div class="single-reservation-author">
-                  <div class="single-reservation-author-flex">
-                    <div class="single-reservation-author-thumb">
-                      <img src="assets/img/dashboard/author.jpg" alt="img">
-                    </div>
-                    <div class="single-reservation-author-contents">
-                      <h5 class="single-reservation-author-contents-title">{{userProfile.userName}}</h5>
-                      <p class="single-reservation-author-contents-para"> Member since <span>{{userProfile.createdAt | date
-                          }}</span> </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="btn-wrapper">
-                  <a [routerLink]="['/edit-user-profile']" class="cmn-btn btn-border"> Edit Profile </a>
-                </div>
-              </div>
-              <div class="single-reservation-item">
-                <div class="single-reservation-contact">
-                  <div class="single-reservation-contact-item">
-                    <span class="single-reservation-contact-list"> <span> <i class="las la-map-marker-alt"></i> </span>
-                      {{userProfile.address}} </span>
-                  </div>
-                  <div class="single-reservation-contact-item">
-                    <a href="https://bytesed.com/cdn-cgi/l/email-protection#aec0cbc2ddc180c0c1dcc3cfc0eecbd6cfc3dec2cb80cdc1c3"
-                      class="single-reservation-contact-list"> <span> <i class="las la-envelope"></i> </span> <span
-                        class="__cf_email__"
-                        data-cfemail="6b050e07180445050419060a052b0e130a061b070e45080406">{{userProfile.email}}</span>
-                    </a>
-                  </div>
-                  <div class="single-reservation-contact-item">
-                    <a href="tel:{{userProfile.phoneNumber}}" class="single-reservation-contact-list"> <span> <i
-                          class="las la-phone-alt"></i> </span> {{userProfile.phoneNumber}} </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="single-reservation bg-white base-padding">
-              <div class="single-reservation-flex">
-                <div class="single-reservation-author">
-                  <div class="single-reservation-author-flex">
-                    <div class="single-reservation-author-contents">
-                      <h5 class="single-reservation-author-contents-title"> Password </h5>
-                      <p class="single-reservation-author-contents-para"> Last change 4 month ago </p>
+              <h3 class="single-reservation-title"> Edit Profile </h3>
+              <div class="custom--form dashboard-form">
+                <form action="" [formGroup]="updateProfile" (ngSubmit)="OnSubmit()">
+                  <div class="dashboard-flex-input">
+                    <div class="dashboard-input mt-4">
+                      <!--Avatar-->
+                      <div>
+                        <div class="d-flex justify-content-center mb-4">
+                          <img [src]="userProfile.image" class="rounded-circle" alt="example placeholder"
+                            style="width: 200px;height: 200px; object-fit:cover" *ngIf="imgURL == null"/>
+                          <img [src]="imgURL" class="rounded-circle" alt="example placeholder"
+                          style="width: 200px;height: 200px; object-fit:cover" *ngIf="imgURL != null">
+                        </div>
+                        <div class="d-flex justify-content-center">
+                          <div class="btn btn-primary btn-rounded">
+                            <label class="form-label text-white m-1" for="customFile2">Choose file</label>
+                            <span style="color:red;" *ngIf="message">{{message}}</span>
+                            <input type="file" class="form-control d-none" accept='image/*' #file (change)="uploadFile(file.files)"
+                              formControlName="Image" id="customFile2" />
+
+                            </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="btn-wrapper">
-                  <a [routerLink]="['/password-change']" class="cmn-btn btn-border"> Change Password </a>
-                </div>
+                  <div class="dashboard-flex-input">
+                    <div class="dashboard-input mt-4">
+                      <label class="label-title"> Address </label>
+                      <input type="text" class="form--control" formControlName="Address" placeholder="Address"
+                        [value]="userProfile.address">
+                    </div>
+                  </div>
+                  <div class="dashboard-flex-input">
+                    <div class="dashboard-input mt-4">
+                      <label class="label-title"> Email </label>
+                      <input type="text" class="form--control" placeholder="Email" [value]="userProfile.email">
+                    </div>
+                  </div>
+                  <div class="dashboard-flex-input">
+                    <div class="dashboard-input mt-4">
+                      <label class="label-title"> CMND </label>
+                      <input type="text" class="form--control" formControlName="CMND" placeholder="ID Card"
+                        [value]="userProfile.cmnd ">
+                    </div>
+                  </div>
+                  <div class="dashboard-flex-input">
+                    <div class="dashboard-input mt-4">
+                      <label class="label-title"> Phone Number </label>
+                      <input type="text" class="form--control" formControlName="PhoneNumber" id="phone" placeholder="Phone Number"
+                        [value]="userProfile.phoneNumber">
+                    </div>
+                  </div>
+                  <div class="btn-wrapper mt-4">
+                    <button type="submit" class="cmn-btn btn-bg-1"> Save Changes </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>

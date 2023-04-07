@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { finalize, first } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { AuthService } from '../_service/auth.service'
+import { NgToastService } from 'ng-angular-popup';
 @Component({
   selector: 'app-forgetpassword',
   templateUrl: './forgetpassword.component.html',
@@ -15,7 +16,7 @@ export class ForgetpasswordComponent implements OnInit {
   loading = false;
   submitted = false;
   email: any;
-  constructor(private auth: AuthService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private auth: AuthService, private formBuilder: FormBuilder, private router: Router, private toast: NgToastService) { }
   forgotPasswordForm!: FormGroup
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -31,18 +32,22 @@ export class ForgetpasswordComponent implements OnInit {
 
     this.loading = true;
 
-    this.auth.requestChangePassword(this.form.value.email, environment.BASE_URL_WEB+"/reset-password")
+    this.auth.requestChangePassword(this.form.value.email, environment.BASE_URL_WEB + "/user/request-change-password")
       .subscribe((result_resetpasswordstatus) => {
-        if (result_resetpasswordstatus.statusCode == 1) {
-          alert("ok, check email to change pass");
-        this.router.navigate(['login'])
-        }
-        else {
-          alert("not ok");
-        }
+        const message = result_resetpasswordstatus.message
+
+
+        this.toast.success({
+          detail: message
+
+        })
+
       },
         (err) => {
           console.log(err);
+          this.toast.error({
+            detail: err.error.message
+          })
         })
   }
 }

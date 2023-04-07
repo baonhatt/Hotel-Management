@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, ValidationErrors } from '@angular/forms';
 import {  Router } from '@angular/router';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-signup',
@@ -25,7 +26,7 @@ export class SignupComponent implements OnInit{
     this.injectScript("assets/js/signup/signup.js");
     this.signup = this.fb.group({
       name: ['',Validators.required, Validators.name],
-      email: ['', [Validators.required ,Validators.email]],
+      Email: ['', [Validators.required ,Validators.email]],
       userName: ['',Validators.required, Validators.name],
       phoneNumber:['', Validators.required, Validators.pattern("[0-9 ]{12}")],
       password: ['',[Validators.required,Validators.pattern('^((?!.*[s])(?=.*[A-Z])(?=.*d).{8,99})')]],
@@ -35,7 +36,7 @@ export class SignupComponent implements OnInit{
 
   signupdata(signup: FormGroup){
 
-    this.http.post<any>("http://webhotel1-dev.eba-9v28ppea.ap-south-1.elasticbeanstalk.com/api/Authen/Registration", this.signup.value)
+    this.http.post<any>(`${environment.BASE_URL_API}/user/register`, this.signup.value)
     .subscribe(res =>{
       alert("Create an account successfully!");
 
@@ -47,12 +48,12 @@ export class SignupComponent implements OnInit{
   }
 
   onSubmit() {
-    this.submitted = true;
-    this.loading = true;
-    // stop here if form is invalid
-    if (this.signup.invalid) {
-        return ;
-    }
+    // this.submitted = true;
+    // this.loading = true;
+    // // stop here if form is invalid
+    // if (this.signup.invalid) {
+    //     return ;
+    // }
 
     this.signupdata(this.signup)
   }

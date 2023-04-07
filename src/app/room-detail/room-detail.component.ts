@@ -11,24 +11,22 @@ import { ApiService } from '../_service/api.service';
 export class RoomDetailComponent implements OnInit {
 
   // @Input() room!: Room;
-  @Output() onRemoveEmployee = new EventEmitter<number>();
-  @Output() onEditEmployee = new EventEmitter<number>();
-  imageUrl: string = '';
-  errorMessage = '';
+  room!: Room
+  constructor(private route: ActivatedRoute, private apiService: ApiService){}
 
-  roomToDisplay!: Room[];
-  room!: Room[]
-  constructor(private apiService: ApiService, private route: ActivatedRoute) {
-  this.roomToDisplay = this.room;
+  ngOnInit() {
 
-
-
+    this.getRoomById();
   }
-  ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.apiService.getRoomDetail(id).subscribe(room =>
-      this.room)
+  getRoomById(): void {
+    const id = this.route.snapshot.paramMap.get('id')!;
+    this.apiService.getRoomDetail(id)
+      .subscribe(room => {
+        console.log(room);
+        this.room = room
+      });
   }
+
 
 }
-export {Room};
+

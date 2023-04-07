@@ -13,6 +13,10 @@ import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.compone
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { ContactComponent } from './contact/contact.component';
 import { ListingComponent } from './listing/listing.component';
+import { EditProfileComponent } from './client/edit-profile/edit-profile.component';
+import { PasswordChangeComponent } from './client/password-change/password-change.component';
+import { BlogsComponent } from './blogs/blogs.component';
+import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
@@ -40,7 +44,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'room-detail',
+    path: 'room-detail/:id',
     component: RoomDetailComponent,
     data: {
       requiredAuth: false
@@ -50,6 +54,38 @@ const routes: Routes = [
   {
     path: 'user-profile',
     component: ProfileComponent,
+    data: {
+      requiredAuth: true
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'blogs',
+    component: BlogsComponent,
+    data: {
+      requiredAuth: false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'blog-detail/:id',
+    component: BlogDetailComponent,
+    data: {
+      requiredAuth: false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit-profile',
+    component: EditProfileComponent,
+    data: {
+      requiredAuth: true
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'password-change',
+    component: PasswordChangeComponent,
     data: {
       requiredAuth: false
     },
