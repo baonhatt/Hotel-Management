@@ -15,24 +15,20 @@ export class RoomDetailComponent implements OnInit {
   @Output() onEditEmployee = new EventEmitter<number>();
   imageUrl: string = '';
   errorMessage = '';
-  room: Room | undefined;
+
+  roomToDisplay!: Room[];
+  room!: Room[]
   constructor(private apiService: ApiService, private route: ActivatedRoute) {
-    
+  this.roomToDisplay = this.room;
 
 
 
   }
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    if (id) {
-      this.getRoomDetail(id);
-    }
+    const id = this.route.snapshot.paramMap.get('id');
+    this.apiService.getRoomDetail(id).subscribe(room =>
+      this.room)
   }
-  getRoomDetail(id: number): void {
-    this.apiService.getRoomDetail(id).subscribe({
-      next: room => this.room == room,
-      error: err => this.errorMessage = err
-    });
-  }
+
 }
 export {Room};

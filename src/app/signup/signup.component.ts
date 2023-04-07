@@ -35,7 +35,7 @@ export class SignupComponent implements OnInit{
 
   signupdata(signup: FormGroup){
 
-    this.http.post<any>("https://localhost:44380/api/Authorization/Registration", this.signup.value)
+    this.http.post<any>("http://webhotel1-dev.eba-9v28ppea.ap-south-1.elasticbeanstalk.com/api/Authen/Registration", this.signup.value)
     .subscribe(res =>{
       alert("Create an account successfully!");
 

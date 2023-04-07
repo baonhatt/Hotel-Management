@@ -34,7 +34,8 @@ export class ForgetpasswordComponent implements OnInit {
     this.auth.requestChangePassword(this.form.value.email, environment.BASE_URL_WEB+"/reset-password")
       .subscribe((result_resetpasswordstatus) => {
         if (result_resetpasswordstatus.statusCode == 1) {
-          alert("ok");
+          alert("ok, check email to change pass");
+        this.router.navigate(['login'])
         }
         else {
           alert("not ok");

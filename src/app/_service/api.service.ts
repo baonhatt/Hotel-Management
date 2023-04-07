@@ -12,16 +12,11 @@ export class ApiService {
   user: any;
   room: any;
   baseUrl = 'http://localhost:3000/rooms';
-
+  private apiDetailUrl = 'http://localhost:3000/room-detail/';
   getRooms() {
     return this.http.get<Room[]>(this.baseUrl);
   }
-  getRoomDetail(id: number): Observable<Room |undefined>{
-    return this.getRooms()
-    .pipe(
-      map((rooms: Room[]) => rooms.find(p => p.id === id))
-    );
-  }
+
 
   postRoom(_room: Room) {
     return this.http.post<Room>(this.baseUrl, _room);
@@ -33,5 +28,8 @@ export class ApiService {
   getUser() {
     this.user = this.auth.userProfile
     return this.user
+  }
+  getRoomDetail(id: any): Observable<Room> {
+    return this.http.get<Room>(`${this.apiDetailUrl}${id}`);
   }
 }

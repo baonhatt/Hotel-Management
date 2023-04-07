@@ -61,7 +61,7 @@
       "price": 20
     }
   ],
-  "comments": [
+  "room-detail": [
     {
       "id": 1,
       "body": "some comment",
