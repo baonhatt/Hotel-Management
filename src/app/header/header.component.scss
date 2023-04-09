@@ -1,3 +1,44 @@
 header nav{
   font-family: 'Poppins', sans-serif;
 }
+.profile-img{
+  width: 45px;
+  height: 45px;
+  object-fit:fill;
+}
+
+.dropdown-menu .nk-notification {
+    max-height: 239px;
+    overflow: auto
+}
+
+.nk-notification-item {
+    display: flex;
+    align-items: center;
+    padding: 1.25rem 1.75rem
+}
+
+.nk-notification-icon {
+    flex-shrink: 0;
+    margin-right: .75rem
+}
+
+.nk-notification-text {
+    font-size: 13px;
+    color: #526484
+}
+
+.nk-notification-text span {
+    color: #364a63
+}
+
+.nk-notification-time {
+    font-size: 11px;
+    color: #8094ae
+}
+
+.dropdown-menu .nk-chat-list,
+.dropdown-menu .chat-list {
+    max-height: 274px;
+    overflow: auto
+}

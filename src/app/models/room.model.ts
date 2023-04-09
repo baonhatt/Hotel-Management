@@ -3,7 +3,7 @@ export class Room {
   typeRoom!: string
   name!: string
   roomPicture!: string
-  discription!: string
+  description!: string
   isActive!: boolean
   rating!: string
   currentPrice!: number

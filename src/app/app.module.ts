@@ -37,6 +37,17 @@ import { IconModule } from '@coreui/icons-angular';
 import { BlogsComponent } from './blogs/blogs.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { AdminSignupComponent } from './admin/admin-signup/admin-signup.component';
+import { AboutComponent } from './about/about.component';
+import { LeftContentComponent } from './client/dashboard/left-content/left-content.component';
+import { LeftContentAdminComponent } from './admin/dashboard/left-content-admin/left-content-admin.component';
+import { BookingComponent } from './admin/dashboard/booking/booking.component';
+import { AddBookingComponent } from './admin/dashboard/booking/add-booking/add-booking.component';
+import { EditBookingComponent } from './admin/dashboard/booking/edit-booking/edit-booking.component';
+import { RoomComponent } from './admin/dashboard/room/room.component';
+import { AddRoomComponent } from './admin/dashboard/room/add-room/add-room.component';
+import { EditRoomComponent } from './admin/dashboard/room/edit-room/edit-room.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +70,17 @@ import { CheckoutComponent } from './checkout/checkout.component';
     BlogsComponent,
     BlogDetailComponent,
     CheckoutComponent,
+    AdminLoginComponent,
+    AdminSignupComponent,
+    AboutComponent,
+    LeftContentComponent,
+    LeftContentAdminComponent,
+    BookingComponent,
+    AddBookingComponent,
+    EditBookingComponent,
+    RoomComponent,
+    AddRoomComponent,
+    EditRoomComponent,
   ],
   imports: [
     BrowserModule,

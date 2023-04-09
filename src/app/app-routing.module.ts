@@ -17,6 +17,15 @@ import { EditProfileComponent } from './client/edit-profile/edit-profile.compone
 import { PasswordChangeComponent } from './client/password-change/password-change.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { AdminSignupComponent } from './admin/admin-signup/admin-signup.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { AboutComponent } from './about/about.component';
+import { BookingComponent } from './admin/dashboard/booking/booking.component';
+import { AddBookingComponent } from './admin/dashboard/booking/add-booking/add-booking.component';
+import { AddRoomComponent } from './admin/dashboard/room/add-room/add-room.component';
+import { EditRoomComponent } from './admin/dashboard/room/edit-room/edit-room.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
@@ -48,6 +57,22 @@ const routes: Routes = [
     component: RoomDetailComponent,
     data: {
       requiredAuth: false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
+    data: {
+      requiredAuth: true
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'about',
+    component: AboutComponent,
+    data: {
+      requiredAuth: true
     },
     canActivate: [AuthGuard]
   },
@@ -118,6 +143,78 @@ const routes: Routes = [
   {
     path: 'room-listing',
     component: ListingComponent,
+    data: {
+      requiredAuth: false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    data: {
+      requiredAuth: false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'login-admin',
+    component: AdminLoginComponent,
+    data: {
+      requiredAuth: false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'signup-admin',
+    component: AdminSignupComponent,
+    data: {
+      requiredAuth: false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'booking',
+    component: BookingComponent,
+    data: {
+      requiredAuth: false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'add-booking',
+    component: AddBookingComponent,
+    data: {
+      requiredAuth: false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit-booking',
+    component: EditProfileComponent,
+    data: {
+      requiredAuth: false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'room',
+    component: RoomDetailComponent,
+    data: {
+      requiredAuth: false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'add-room',
+    component: AddRoomComponent,
+    data: {
+      requiredAuth: false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit-room',
+    component: EditRoomComponent,
     data: {
       requiredAuth: false
     },

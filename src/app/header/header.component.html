@@ -20,20 +20,20 @@
           <li class=" current-menu-item">
             <a routerLink="/home">Home</a>
           </li>
-          <li><a href="about.html"> About </a></li>
-          <li><a href="checkout.html"> Checkout </a></li>
+          <li><a routerLink="/about"> About </a></li>
+          <li><a routerLink="/checkout"> Checkout </a></li>
           <li class="menu-item-has-children current-menu-item">
             <a href="javascript:void(0)">Pages</a>
             <ul class="sub-menu">
               <li><a routerLink="/room-listing">Listing</a></li>
-              <li><a href="hotel_details.html"> Hotel Details </a></li>
-              <li><a href="confirmation.html"> Confirmation </a></li>
-              <li><a href="dashboard.html"> Dashboard </a></li>
-              <li><a href="dashboard_cancellation.html"> Cancellations </a></li>
-              <li><a href="dashboard_report_issue.html"> Report Issue </a></li>
-              <li><a href="dashboard_support.html"> Support </a></li>
-              <li><a href="dashboard_tickets.html"> Tickets </a></li>
-              <li><a href="dashboard_add_tickets.html"> Add Ticket </a></li>
+              <li><a routerLink="hotel_details.html"> Hotel Details </a></li>
+              <li><a routerLink="confirmation.html"> Confirmation </a></li>
+              <li><a routerLink="dashboard.html"> Dashboard </a></li>
+              <li><a routerLink="dashboard_cancellation.html"> Cancellations </a></li>
+              <li><a routerLink="dashboard_report_issue.html"> Report Issue </a></li>
+              <li><a routerLink="dashboard_support.html"> Support </a></li>
+              <li><a routerLink="dashboard_tickets.html"> Tickets </a></li>
+              <li><a routerLink="dashboard_add_tickets.html"> Add Ticket </a></li>
               <li><a [routerLink]="['/user-profile']"> Dashboard Profile </a></li>
               <li><a [routerLink]="['/edit-user-profile']"> Edit Profile </a></li>
               <li><a [routerLink]="['/password-change']"> Password Change </a></li>
@@ -46,6 +46,9 @@
           <li><a routerLink="/contact"> Contact Us </a></li>
         </ul>
       </div>
+      <div class="navbar-right-flex">
+
+      </div>
       <div class="navbar-right-content show-nav-content">
         <div class="single-right-content">
           <div class="navbar-right-flex">
@@ -56,7 +59,7 @@
                 <div class="navbar-author">
                   <div class="navbar-author-flex">
                     <div class="navbar-author-thumb">
-                      <img src="assets/img/single-page/author.jpg" alt="img">
+                      <img class="profile-img" src="{{userProfile.image}}" alt="img">
                     </div>
                     <div class="navbar-author-name">
                       <h6 class="navbar-author-name-title">{{ getLoggedInUser() }} </h6>
@@ -81,6 +84,7 @@
                 <a routerLink="/signup"  class="cmn-btn btn-bg-1 radius-10"> Sign Up </a>
               </div>
             </ng-template>
+
           </div>
         </div>
       </div>
