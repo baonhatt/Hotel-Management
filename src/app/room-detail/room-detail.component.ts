@@ -11,7 +11,7 @@ import { ApiService } from '../_service/api.service';
 export class RoomDetailComponent implements OnInit {
 
   // @Input() room!: Room;
-  room!: Room
+  room!: any
   constructor(private route: ActivatedRoute, private apiService: ApiService){}
 
   ngOnInit() {
@@ -21,9 +21,9 @@ export class RoomDetailComponent implements OnInit {
   getRoomById(): void {
     const id = this.route.snapshot.paramMap.get('id')!;
     this.apiService.getRoomDetail(id)
-      .subscribe(room => {
-        console.log(room);
-        this.room = room
+      .subscribe(res => {
+        console.log(res);
+        this.room = res
       });
   }
 

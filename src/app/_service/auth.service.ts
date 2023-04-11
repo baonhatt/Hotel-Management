@@ -125,4 +125,20 @@ export class AuthService {
   }
 
 
+  bookRoom(startDate: Date, endDate: Date, numOfPeople: number, roomId: string, phoneNumber: string, name: string){
+    const body = {
+      start_date: startDate,
+      end_date: endDate,
+      num_of_people: numOfPeople,
+      room_id: roomId
+    };
+    return this.http.post(environment.BASE_URL_API + '/user/reservation/create', body);
+  }
+  getNumberOfDays(startDate: Date, endDate: Date): number {
+    const timeDiff = endDate.getTime() - startDate.getTime();
+    const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    return daysDiff;
+  }
+
+
 }
