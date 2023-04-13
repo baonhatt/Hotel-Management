@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
 
     this.getUserProfile()
+    this.auth.loadPage()
   }
 
   getUserProfile() : any{

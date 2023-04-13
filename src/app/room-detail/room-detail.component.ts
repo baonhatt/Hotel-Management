@@ -19,12 +19,6 @@ export class RoomDetailComponent implements OnInit {
 
     this.roomId = this.route.snapshot.paramMap.get('id')
 
-    if (!sessionStorage.getItem('isPageReloaded')) {
-      sessionStorage.setItem('isPageReloaded', 'true');
-      location.reload();
-    } else {
-      sessionStorage.removeItem('isPageReloaded');
-    }
     this.getRoomById();
 
   }

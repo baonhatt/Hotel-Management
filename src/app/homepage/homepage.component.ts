@@ -75,7 +75,7 @@ export class HomepageComponent implements OnInit {
       this.roomtoDisplay = this.rooms;
     } else {
       filteredRooms = this.rooms.filter((val, index) => {
-        let targetKey =  val.name.toLowerCase()
+        let targetKey =  val.name.toLowerCase() + val.currentPrice.toString()
         let searchKey = event.toLowerCase();
         return targetKey.includes(searchKey);
       });

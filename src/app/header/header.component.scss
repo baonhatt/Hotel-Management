@@ -6,21 +6,11 @@ header nav{
   height: 45px;
   object-fit:fill;
 }
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'Montserrat', sans-serif;
-}
 
 body{
 	background: #ececec;
-}
-
-.wrapper{
-
 }
 
 
@@ -42,6 +32,7 @@ body{
 .notification_wrap .dropdown{
 	width: 350px;
 	height: auto;
+  right: 3rem;
 	background: #fff;
 	border-radius: 5px;
 	box-shadow: 2px 2px 3px rgba(0,0,0,0.125);
@@ -49,6 +40,7 @@ body{
 	padding: 15px;
 	position: absolute;
 	display: none;
+  z-index: 99999;
 }
 
 .notification_wrap .dropdown .notify_item{

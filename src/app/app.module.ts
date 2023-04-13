@@ -39,7 +39,6 @@ import { CheckoutComponent } from './checkout/checkout.component';
 
 import { AboutComponent } from './about/about.component';
 import { LeftContentComponent } from './client/dashboard/left-content/left-content.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +60,6 @@ import { LeftContentComponent } from './client/dashboard/left-content/left-conte
     BlogsComponent,
     BlogDetailComponent,
     CheckoutComponent,
-
     AboutComponent,
     LeftContentComponent,
 

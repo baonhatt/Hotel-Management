@@ -1,25 +1,27 @@
-import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpClient, HttpEvent } from '@angular/common/http';
+import { Injectable, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { BehaviorSubject, catchError, map, Observable, of, switchMap, tap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, of, switchMap, tap } from 'rxjs';
 import { TokenModel } from './token.model';
 import { User } from './user.model';
 import { StorageService } from './storage.service';
 import { NgToastService } from 'ng-angular-popup'
 import { environment } from '../../environments/environment.development';
-import { Room } from '../models/room.model';
 // import { TranslateService } from "@ngx-translate/core";
 export const JWT_NAME = 'blog-token';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class AuthService implements OnInit{
 
-
+  isHomePageLoaded = false;
   email: any;
   jwtService: JwtHelperService = new JwtHelperService();
   constructor(private http: HttpClient, private storage: StorageService, private jwtHelper: JwtHelperService, private toast: NgToastService) { }
+  ngOnInit(): void {
+    this.loadPage()
+  }
   userProfile = new BehaviorSubject<User | null>(null);
   login(email: string, password: string) {
     const body = {
@@ -43,6 +45,15 @@ export class AuthService {
         return of(false);
       }),
     );
+  }
+  loadPage(){
+    if(!sessionStorage.getItem('isPageReloaded')){
+      sessionStorage.setItem('isPageReloaded','true');
+      window.location.reload()
+    } else {
+      sessionStorage.removeItem('isPageReloaded');
+    }
+
   }
   refreshToken(login: TokenModel) {
     return this.http.post<TokenModel>(

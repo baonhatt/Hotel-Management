@@ -3,8 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
+
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LayoutpageComponent } from './components/layoutpage/layoutpage.component';
@@ -19,11 +18,14 @@ import { BookingComponent } from './components/components/booking/booking.compon
 import { CustomerComponent } from './components/components/customer/customer.component';
 import { RoomComponent } from './components/components/room/room.component';
 import { AddbookingComponent } from './components/addbooking/addbooking.component';
+import { LoginAdminComponent } from './components/login-admin/login-admin.component';
+import { SignupAdminComponent } from './components/signup-admin/signup-admin.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgToastModule } from 'ng-angular-popup';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    SignupComponent,
     HeaderComponent,
     SidebarComponent,
     LayoutpageComponent,
@@ -31,9 +33,13 @@ import { AddbookingComponent } from './components/addbooking/addbooking.componen
     BookingComponent,
     CustomerComponent,
     RoomComponent,
-    AddbookingComponent
+    AddbookingComponent,
+    LoginAdminComponent,
+    SignupAdminComponent,
+
   ],
   imports: [
+    NgToastModule,
     BrowserModule,
     AppRoutingModule,
     MatSidenavModule,
@@ -42,6 +48,10 @@ import { AddbookingComponent } from './components/addbooking/addbooking.componen
     MatIconModule,
     MatDividerModule,
     MatListModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
