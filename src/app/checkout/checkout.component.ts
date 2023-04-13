@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from '../_service/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
+import { ActivatedRoute, Route } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -16,24 +17,25 @@ export class CheckoutComponent implements OnInit {
   endDate!: Date;
   numDays!: number;
   numOfPeople!: number;
-  roomId!: string;
+  roomId!: any;
   get f() {
     return this.bookForm.controls
   }
 
   constructor(private auth: AuthService,
     private fb: FormBuilder,
-    private http: HttpClient
-
+    private http: HttpClient,
+    private route: ActivatedRoute
 
 
     ) { }
 
   ngOnInit(): void {
+    this.roomId = this.route.snapshot.paramMap.get('id')
     this.bookForm = this.fb.group({
-      startDate: [''],
-      endDate: [''],
-      roomId: [''],
+      startDate:new Date().toISOString(),
+      endDate:new Date().toISOString(),
+      roomId: [this.roomId],
       numberOfDay: [''],
       email: [''],
       name: [''],
@@ -67,5 +69,7 @@ export class CheckoutComponent implements OnInit {
   OnSubmit(){
     this.calculateDays
     this.bookingRoom(this.bookForm)
+    console.log(this.roomId);
+
   }
 }

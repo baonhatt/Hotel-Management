@@ -14,7 +14,6 @@ import { HeaderComponent } from './header/header.component';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { CanActivate } from '@angular/router';
 import { AuthGuard } from './_helper/http.guard';
-import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { RoomDetailComponent } from './room-detail/room-detail.component';
 import { FooterComponent } from './footer/footer.component';
 import { StorageService } from './_service/storage.service';
@@ -37,17 +36,10 @@ import { IconModule } from '@coreui/icons-angular';
 import { BlogsComponent } from './blogs/blogs.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
-import { AdminSignupComponent } from './admin/admin-signup/admin-signup.component';
+
 import { AboutComponent } from './about/about.component';
 import { LeftContentComponent } from './client/dashboard/left-content/left-content.component';
-import { LeftContentAdminComponent } from './admin/dashboard/left-content-admin/left-content-admin.component';
-import { BookingComponent } from './admin/dashboard/booking/booking.component';
-import { AddBookingComponent } from './admin/dashboard/booking/add-booking/add-booking.component';
-import { EditBookingComponent } from './admin/dashboard/booking/edit-booking/edit-booking.component';
-import { RoomComponent } from './admin/dashboard/room/room.component';
-import { AddRoomComponent } from './admin/dashboard/room/add-room/add-room.component';
-import { EditRoomComponent } from './admin/dashboard/room/edit-room/edit-room.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +47,6 @@ import { EditRoomComponent } from './admin/dashboard/room/edit-room/edit-room.co
     SignupComponent,
     HomepageComponent,
     HeaderComponent,
-    DashboardComponent,
     RoomDetailComponent,
     FooterComponent,
     PagenotfoundComponent,
@@ -70,17 +61,10 @@ import { EditRoomComponent } from './admin/dashboard/room/edit-room/edit-room.co
     BlogsComponent,
     BlogDetailComponent,
     CheckoutComponent,
-    AdminLoginComponent,
-    AdminSignupComponent,
+
     AboutComponent,
     LeftContentComponent,
-    LeftContentAdminComponent,
-    BookingComponent,
-    AddBookingComponent,
-    EditBookingComponent,
-    RoomComponent,
-    AddRoomComponent,
-    EditRoomComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -132,10 +116,10 @@ export function jwtOptionsFactor(storage:StorageService){
 
       return storage.getAccessToken();
     },
-    allowedDomains:["http://webhotel1-dev.eba-9v28ppea.ap-south-1.elasticbeanstalk.com"],
+    allowedDomains:["https://webhotel.click"],
     disallowedRoutes:[
-      "http://webhotel1-dev.eba-9v28ppea.ap-south-1.elasticbeanstalk.com/user/login",
-      "http://webhotel1-dev.eba-9v28ppea.ap-south-1.elasticbeanstalk.com/user/token/refresh"
+      "https://webhotel.click/user/login",
+      "https://webhotel.click/user/token/refresh"
     ],
     skipWhenExpired: false,
   }

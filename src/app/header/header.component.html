@@ -17,29 +17,11 @@
       </div>
       <div class="collapse navbar-collapse" id="hotel_booking_menu">
         <ul class="navbar-nav">
-          <li class=" current-menu-item">
-            <a routerLink="/home">Home</a>
-          </li>
+          <li class=" current-menu-item"><a routerLink="/home">Home</a></li>
           <li><a routerLink="/about"> About </a></li>
           <li><a routerLink="/checkout"> Checkout </a></li>
-          <li class="menu-item-has-children current-menu-item">
-            <a href="javascript:void(0)">Pages</a>
-            <ul class="sub-menu">
-              <li><a routerLink="/room-listing">Listing</a></li>
-              <li><a routerLink="hotel_details.html"> Hotel Details </a></li>
-              <li><a routerLink="confirmation.html"> Confirmation </a></li>
-              <li><a routerLink="dashboard.html"> Dashboard </a></li>
-              <li><a routerLink="dashboard_cancellation.html"> Cancellations </a></li>
-              <li><a routerLink="dashboard_report_issue.html"> Report Issue </a></li>
-              <li><a routerLink="dashboard_support.html"> Support </a></li>
-              <li><a routerLink="dashboard_tickets.html"> Tickets </a></li>
-              <li><a routerLink="dashboard_add_tickets.html"> Add Ticket </a></li>
-              <li><a [routerLink]="['/user-profile']"> Dashboard Profile </a></li>
-              <li><a [routerLink]="['/edit-user-profile']"> Edit Profile </a></li>
-              <li><a [routerLink]="['/password-change']"> Password Change </a></li>
-              <li><a href="error.html"> Error Page </a></li>
-            </ul>
-          </li>
+          <li><a routerLink="/room-listing"> Room </a></li>
+
           <li><a routerLink="/blogs" >Blog</a></li>
 
 
@@ -53,6 +35,52 @@
         <div class="single-right-content">
           <div class="navbar-right-flex">
 
+
+            <div class="btn-wrapper">
+              <div class="notification_wrap">
+                <div class="notification_icon">
+                  <i class="fa fa-bell"></i>
+                </div>
+                <div class="dropdown">
+                  <div class="notify_item">
+                    <div class="notify_img">
+                      <img src="images/not_1.png" alt="profile_pic" style="width: 50px">
+                    </div>
+                    <div class="notify_info">
+                      <p>Alex commented on<span>Timeline Share</span></p>
+                      <span class="notify_time">10 minutes ago</span>
+                    </div>
+                  </div>
+                  <div class="notify_item">
+                    <div class="notify_img">
+                      <img src="images/not_2.png" alt="profile_pic" style="width: 50px">
+                    </div>
+                    <div class="notify_info">
+                      <p>Ben hur commented on your<span>Timeline Share</span></p>
+                      <span class="notify_time">55 minutes ago</span>
+                    </div>
+                  </div>
+                  <div class="notify_item">
+                    <div class="notify_img">
+                      <img src="images/not_3.png" alt="profile_pic" style="width: 50px">
+                    </div>
+                    <div class="notify_info">
+                      <p>Meryn trant liked your<span>Cover Picture</span></p>
+                      <span class="notify_time">2 hours ago</span>
+                    </div>
+                  </div>
+                  <div class="notify_item">
+                    <div class="notify_img">
+                      <img src="images/not_4.png" alt="profile_pic" style="width: 50px">
+                    </div>
+                    <div class="notify_info">
+                      <p>John wick commented on your<span>Profile Picture</span></p>
+                      <span class="notify_time">6 hours ago</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div *ngIf="isLoggedIn(); then loggedInUser; else loginButton"></div>
             <ng-template #loggedInUser>
               <span>

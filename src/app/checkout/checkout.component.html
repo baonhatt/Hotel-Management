@@ -37,29 +37,25 @@
 
                     <div class="single-input mt-4">
                       <label class="label-title"> Start Date </label>
-                      <input class="form--control" type="date" formControlName="startDate"  id="requestdate"
+                      <input class="form--control" type="date" formControlName="startDate" [(ngModel)]="startDate"  id="requestdate"
                         placeholder="Type First Name">
                     </div>
                     <div class="single-input mt-4">
                       <label class="label-title"> Leave Date </label>
-                      <input class="form--control" type="date" formControlName="endDate" placeholder="Type Last Name">
+                      <input class="form--control" type="date" formControlName="endDate" [(ngModel)]="endDate" placeholder="Type Last Name">
                     </div>
                   </div>
                   <div class="input-flex-item">
+
                     <div class="single-input mt-4">
-                      <label class="label-title"> RoomId </label>
-                      <input class="form--control" id="phone" type="tel" formControlName="roomId"
-                        placeholder="Type Mobile Number">
+                      <label class="label-title"> Phone Number </label>
+                      <input class="form--control" type="text" formControlName="phoneNumber"  placeholder="Type Address">
                     </div>
+                  </div>
+                  <div class="input-flex-item">
                     <div class="single-input mt-4">
                       <label class="label-title"> Email Address </label>
                       <input class="form--control" type="text" formControlName="email" placeholder="Type Email">
-                    </div>
-                  </div>
-                  <div class="input-flex-item">
-                    <div class="single-input mt-4">
-                      <label class="label-title"> Phone Number </label>
-                      <input class="form--control" type="text" formControlName="phoneNumber" placeholder="Type Address">
                     </div>
                   </div>
                   <div class="input-flex-item">
@@ -101,7 +97,7 @@
               </div>
             </div>
           </div>
-          
+
           <!-- <div class="checkout-single bg-white radius-10">
                       <h4 class="checkout-title"> Payment </h4>
                       <div class="checkout-contents mt-4">
@@ -180,9 +176,9 @@
               <h4 class="checkout-sidebar-title"> Booking Details </h4>
               <div class="checkout-sidebar-contents">
                 <ul class="checkout-flex-list list-style-none checkout-border-top pt-3 mt-3">
-                  <li class="list"> <span class="regular"> Checking In </span> <span class="strong"> 03 Jun 2022 </span>
+                  <li class="list"> <span class="regular"> Checking In </span> <span class="strong" [innerHTML]="startDate"> </span>
                   </li>
-                  <li class="list"> <span class="regular"> Checking Out </span> <span class="strong"> 06 Jun 2022
+                  <li class="list"> <span class="regular"> Checking Out </span> <span class="strong" [innerHTML]="endDate">
                     </span> </li>
                   <li class="list"> <span class="regular"> Number of Rooms </span> <span class="strong"> 03 </span>
                   </li>

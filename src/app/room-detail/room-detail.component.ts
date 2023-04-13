@@ -11,12 +11,22 @@ import { ApiService } from '../_service/api.service';
 export class RoomDetailComponent implements OnInit {
 
   // @Input() room!: Room;
-  room!: any
+  room!: any;
+  roomId!: any;
   constructor(private route: ActivatedRoute, private apiService: ApiService){}
-
+  isHomePageLoaded = false;
   ngOnInit() {
 
+    this.roomId = this.route.snapshot.paramMap.get('id')
+
+    if (!sessionStorage.getItem('isPageReloaded')) {
+      sessionStorage.setItem('isPageReloaded', 'true');
+      location.reload();
+    } else {
+      sessionStorage.removeItem('isPageReloaded');
+    }
     this.getRoomById();
+
   }
   getRoomById(): void {
     const id = this.route.snapshot.paramMap.get('id')!;
@@ -24,8 +34,11 @@ export class RoomDetailComponent implements OnInit {
       .subscribe(res => {
         console.log(res);
         this.room = res
+
       });
   }
+
+  loadPage(){}
 
 
 }
