@@ -37,6 +37,7 @@ import { IconModule } from '@coreui/icons-angular';
 import { BlogsComponent } from './blogs/blogs.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +60,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     BlogsComponent,
     BlogDetailComponent,
     CheckoutComponent,
+  
   ],
   imports: [
     BrowserModule,

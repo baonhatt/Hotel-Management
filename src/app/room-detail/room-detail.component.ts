@@ -21,7 +21,7 @@ export class RoomDetailComponent implements OnInit {
   getRoomById(): void {
     const id = this.route.snapshot.paramMap.get('id')!;
     this.apiService.getRoomDetail(id)
-      .subscribe(room => {
+      .subscribe((room: Room ) => {
         console.log(room);
         this.room = room
       });

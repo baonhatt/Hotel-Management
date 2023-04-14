@@ -16,6 +16,7 @@
         </button>
       </div>
       <div class="collapse navbar-collapse" id="hotel_booking_menu">
+
         <ul class="navbar-nav">
           <li class=" current-menu-item">
             <a routerLink="/home">Home</a>
@@ -46,7 +47,43 @@
           <li><a routerLink="/contact"> Contact Us </a></li>
         </ul>
       </div>
+
       <div class="navbar-right-content show-nav-content">
+        <div class="dropdown-container">
+          <div class="notifications dropdown dd-trigger" ng-click="showNotifications($event)">
+            <span class="count animated" id="notifications-count"></span>
+            <span class="fa fa-bell-o"></span>
+          </div>
+          <div class="dropdown-menu animated" id="notification-dropdown">
+            <div class="dropdown-header">
+              <span class="triangle"></span>
+              <span class="heading">Notifications</span>
+              <span class="count" id="dd-notifications-count"></span>
+            </div>
+            <div class="dropdown-body">
+              <div class="notification new" ng-repeat="notification in newNotifications.slice().reverse() track by notification.timestamp">
+                <div class="notification-image-wrapper">
+                  <div class="notification-image">
+                    <img src="" alt="" width="32">
+                  </div>
+                </div>
+                <div class="notification-text">
+                   <span class="highlight"></span>
+                </div>
+              </div>
+              <div class="notification" ng-repeat="notification in readNotifications.slice().reverse() track by $index">
+                <div class="notification-image-wrapper">
+                  <div class="notification-image">
+                    <img src="" alt="" width="32">
+                  </div>
+                </div>
+                <div class="notification-text">
+                   <span class="highlight"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="single-right-content">
           <div class="navbar-right-flex">
 

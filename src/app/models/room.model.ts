@@ -1,13 +1,14 @@
 export class Room {
   id!: number
-  typeRoom!: string
+  roomTypeName!: string
   name!: string
   roomPicture!: string
-  discription!: string
+  description!: string
   isActive!: boolean
   rating!: string
   currentPrice!: number
   discountPrice!: number
-  guestNumber!: number
+  peopleNumber!: string
+  numberOfBed!: string
   starAmount!: number
 }

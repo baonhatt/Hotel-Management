@@ -49,7 +49,5 @@ export class ApiService {
     this.user = this.auth.userProfile
     return this.user
   }
-  getRoomDetail(id: any): Observable<Room> {
-    return this.http.get<Room>(`${this.apiDetailUrl}${id}`);
-  }
+ 
 }
