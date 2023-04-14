@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./listing.component.scss']
 })
 export class ListingComponent implements OnInit {
-  
+
   rooms: Room[] = [];
 
   constructor( private roomService: ApiService,
@@ -27,6 +27,8 @@ export class ListingComponent implements OnInit {
       this.rooms = res;
     })
   }
-
+  routePage(){
+    this.router.navigate(['/room-detail/{{room.id}}'])
+  }
 
 }

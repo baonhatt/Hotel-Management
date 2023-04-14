@@ -14,7 +14,6 @@ import { HeaderComponent } from './header/header.component';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { CanActivate } from '@angular/router';
 import { AuthGuard } from './_helper/http.guard';
-import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { RoomDetailComponent } from './room-detail/room-detail.component';
 import { FooterComponent } from './footer/footer.component';
 import { StorageService } from './_service/storage.service';
@@ -38,6 +37,8 @@ import { BlogsComponent } from './blogs/blogs.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 
+import { AboutComponent } from './about/about.component';
+import { LeftContentComponent } from './client/dashboard/left-content/left-content.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,6 @@ import { CheckoutComponent } from './checkout/checkout.component';
     SignupComponent,
     HomepageComponent,
     HeaderComponent,
-    DashboardComponent,
     RoomDetailComponent,
     FooterComponent,
     PagenotfoundComponent,
@@ -60,7 +60,9 @@ import { CheckoutComponent } from './checkout/checkout.component';
     BlogsComponent,
     BlogDetailComponent,
     CheckoutComponent,
-  
+    AboutComponent,
+    LeftContentComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -112,10 +114,10 @@ export function jwtOptionsFactor(storage:StorageService){
 
       return storage.getAccessToken();
     },
-    allowedDomains:["http://webhotel1-dev.eba-9v28ppea.ap-south-1.elasticbeanstalk.com"],
+    allowedDomains:["https://webhotel.click"],
     disallowedRoutes:[
-      "http://webhotel1-dev.eba-9v28ppea.ap-south-1.elasticbeanstalk.com/user/login",
-      "http://webhotel1-dev.eba-9v28ppea.ap-south-1.elasticbeanstalk.com/user/token/refresh"
+      "https://webhotel.click/user/login",
+      "https://webhotel.click/user/token/refresh"
     ],
     skipWhenExpired: false,
   }

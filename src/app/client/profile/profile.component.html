@@ -26,28 +26,8 @@
             <i class="las la-bars"></i>
           </div>
         </div>
-        <div class="dashboard-left-content">
-          <div class="dashboard-close-main">
-            <div class="close-bars"> <i class="las la-times"></i> </div>
-            <div class="dashboard-bottom">
-              <ul class="dashboard-list list-style-none">
+  <app-left-content></app-left-content>
 
-                <li class="list has-children active open show">
-                  <a href="javascript:void(0)"> <i class="las la-user-circle"></i> Profile </a>
-                  <ul class="submenu list-style-none">
-                    <li class="list selected"> <a [routerLink]="['/user-profile']"> Profile </a> </li>
-                    <li class="list"> <a [routerLink]="['/edit-profile']"> Edit Profile </a> </li>
-                    <li class="list"> <a [routerLink]="['/user-profile']"> Password Change </a> </li>
-                  </ul>
-                </li>
-
-                <li class="list">
-                  <a (click)="logout()"> <i class="las la-sign-out-alt"></i> Log Out </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
         <div class="dashboard-right-contents mt-4 mt-lg-0">
           <div class="dashboard-reservation">
             <div class="single-reservation bg-white base-padding">
@@ -55,7 +35,7 @@
                 <div class="single-reservation-author">
                   <div class="single-reservation-author-flex">
                     <div class="single-reservation-author-thumb">
-                      <img src="assets/img/dashboard/author.jpg" alt="img">
+                      <img class="profile-img" src="{{userProfile.image}}" alt="img">
                     </div>
                     <div class="single-reservation-author-contents">
                       <h5 class="single-reservation-author-contents-title">{{userProfile.userName}}</h5>
@@ -65,7 +45,7 @@
                   </div>
                 </div>
                 <div class="btn-wrapper">
-                  <a [routerLink]="['/edit-user-profile']" class="cmn-btn btn-border"> Edit Profile </a>
+                  <a [routerLink]="['/edit-profile']" class="cmn-btn btn-border"> Edit Profile </a>
                 </div>
               </div>
               <div class="single-reservation-item">

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ApiService } from '../_service/api.service';
 import { AuthService } from '../_service/auth.service';
-declare function notiPopup(): void
+import { UserService } from '../_service/user.service';
+import { userProfile } from '../models/userProfile.model';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -11,7 +13,6 @@ declare function notiPopup(): void
 export class HeaderComponent implements OnInit {
 
 
-  users = [];
   dataloading = false;
   pageSize = 10;
   paginationEnabled = false;
@@ -26,8 +27,17 @@ export class HeaderComponent implements OnInit {
     notiPopup();
 
   }
+  userProfile = new userProfile;
+  constructor(private auth: AuthService, private fb: FormBuilder, private apiServe: ApiService, private userService: UserService){}
 
+    this.getUserProfile()
+  }
 
+  getUserProfile() : any{
+    this.userService.getUserProfile().subscribe((res) => {
+      this.userProfile = res;
+    })
+  }
 
   isLoggedIn() {
     return this.auth.isLoggedIn();

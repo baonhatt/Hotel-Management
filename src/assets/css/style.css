@@ -8713,7 +8713,7 @@ a.lazyloads  {
   color: #fff;
 }
 .single-why-two-border {
-  border: 2px solid var(--gray-color);
+  border: 4px solid var(--gray-color);
 }
 .single-why-two-flex {
   display: -webkit-box;

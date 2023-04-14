@@ -17,6 +17,10 @@ import { EditProfileComponent } from './client/edit-profile/edit-profile.compone
 import { PasswordChangeComponent } from './client/password-change/password-change.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+
+import { CheckoutComponent } from './checkout/checkout.component';
+import { AboutComponent } from './about/about.component';
+
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
@@ -48,6 +52,22 @@ const routes: Routes = [
     component: RoomDetailComponent,
     data: {
       requiredAuth: false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'checkout/:id',
+    component: CheckoutComponent,
+    data: {
+      requiredAuth: true
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'about',
+    component: AboutComponent,
+    data: {
+      requiredAuth: true
     },
     canActivate: [AuthGuard]
   },
@@ -123,6 +143,24 @@ const routes: Routes = [
     },
     canActivate: [AuthGuard]
   },
+
+  {
+    path: 'edit-booking',
+    component: EditProfileComponent,
+    data: {
+      requiredAuth: false
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'room',
+    component: RoomDetailComponent,
+    data: {
+      requiredAuth: false
+    },
+    canActivate: [AuthGuard]
+  },
+
   {
     path: '**',
     component: PagenotfoundComponent,
