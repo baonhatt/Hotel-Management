@@ -55,12 +55,12 @@ export class HomepageComponent implements OnInit {
     });
 
 
-    this.apiService.getBlogs().subscribe((res) => {
-      for (let b of res) {
-        this.blogs.unshift(b);
-      }
-      this.blogtoDisplay = this.blogs ;
-    });
+    // this.apiService.getBlogs().subscribe((res) => {
+    //   for (let b of res) {
+    //     this.blogs.unshift(b);
+    //   }
+    //   this.blogtoDisplay = this.blogs ;
+    // });
 
   }
   navigateToPage(url: string) {
