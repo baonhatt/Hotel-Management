@@ -10,25 +10,11 @@ import { userProfile } from '../models/userProfile.model';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-
-  dataloading = false;
-  pageSize = 10;
-  paginationEnabled = false;
-  open: boolean = false;
-  myScriptElement!: HTMLScriptElement;
-  constructor(private auth: AuthService, private fb: FormBuilder, private apiServe: ApiService){
-    this.myScriptElement = document.createElement("script")
-    this.myScriptElement.src = "src/assets/scripts.js";
-    document.body.appendChild(this.myScriptElement);
-  }
-  ngOnInit(): void {
-    notiPopup();
-
-  }
   userProfile = new userProfile;
   constructor(private auth: AuthService, private fb: FormBuilder, private apiServe: ApiService, private userService: UserService){}
+  ngOnInit(): void {
 
     this.getUserProfile()
   }
@@ -39,6 +25,7 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+  
   isLoggedIn() {
     return this.auth.isLoggedIn();
   }
@@ -53,7 +40,5 @@ export class HeaderComponent implements OnInit {
     // Xóa thông tin người dùng khỏi localStorage hoặc sessionStorage khi đăng xuất
     localStorage.removeItem('token');
   }
-  toggle() {
 
-  }
 }
