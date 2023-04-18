@@ -6,15 +6,15 @@ import { TokenModel } from './token.model';
 import { User } from './user.model';
 import { StorageService } from './storage.service';
 import { NgToastService } from 'ng-angular-popup'
-import { environment } from '../../environments/environment.development';
+import { environment } from '../environments/environment.development';
 // import { TranslateService } from "@ngx-translate/core";
 export const JWT_NAME = 'blog-token';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService implements OnInit{
-
   isHomePageLoaded = false;
   email: any;
   jwtService: JwtHelperService = new JwtHelperService();

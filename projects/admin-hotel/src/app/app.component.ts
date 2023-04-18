@@ -9,8 +9,9 @@ export class AppComponent {
   title = 'admin-hotel';
 
   sideBarOpen = true;
-
+  isLoggedIn: boolean = false;
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
   }
+
 }

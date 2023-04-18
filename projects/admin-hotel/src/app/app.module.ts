@@ -23,6 +23,8 @@ import { SignupAdminComponent } from './components/signup-admin/signup-admin.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgToastModule } from 'ng-angular-popup';
 import { HttpClientModule } from '@angular/common/http';
+import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
+import { StorageService } from './_service/storage.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +51,13 @@ import { HttpClientModule } from '@angular/common/http';
     MatDividerModule,
     MatListModule,
     FormsModule,
+    JwtModule.forRoot({
+      jwtOptionsProvider:{
+        provide:JWT_OPTIONS,
+        useFactory: jwtOptionsFactor,
+        deps:[StorageService]
+      }
+    }),
     ReactiveFormsModule,
     HttpClientModule
 
@@ -57,3 +66,20 @@ import { HttpClientModule } from '@angular/common/http';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function jwtOptionsFactor(storage:StorageService){
+  return {
+    tokenGetter:() => {
+      console.log("Đã add authen");
+
+      return storage.getAccessToken();
+    },
+    allowedDomains:["https://webhotel.click"],
+    disallowedRoutes:[
+      "https://webhotel.click/user/login",
+      "https://webhotel.click/user/token/refresh"
+    ],
+    skipWhenExpired: false,
+  }
+}
+
